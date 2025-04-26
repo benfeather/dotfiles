@@ -1,5 +1,7 @@
 {
 	"cSpell.words": [
-		"nixpkgs"
+		"nixos",
+		"nixpkgs",
+		"pkgs"
 	]
 }
