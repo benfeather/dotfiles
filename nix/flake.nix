@@ -19,7 +19,7 @@
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs, home-manager }: 
     let
-      ROOT_DIR = "/Users/ben/Dotfiles/nix";
+      ROOT_DIR = "/Users/ben/Dotfiles/nix"; #TODO: Make this relative to the flake
     in {
       darwinConfigurations = builtins.listToAttrs (
         map (hostname: {
@@ -28,11 +28,25 @@
             modules = [
               "${ROOT_DIR}/hosts/common"
               "${ROOT_DIR}/hosts/darwin/common"
-              "${ROOT_DIR}/hosts/darwin/${hostname}" 
+              "${ROOT_DIR}/hosts/darwin/${hostname}"
             ];
             specialArgs = { inherit inputs; };
           };
         }) (builtins.attrNames (builtins.readDir "${ROOT_DIR}/hosts/darwin"))
       );
+
+      # nixosConfigurations = builtins.listToAttrs (
+      #   map (host: {
+      #     name = host;
+      #     value = nixpkgs.lib.nixosSystem {
+      #       modules = [ 
+      #         "${ROOT_DIR}/hosts/common"
+      #         "${ROOT_DIR}/hosts/nixos/common"
+      #         "${ROOT_DIR}/hosts/nixos/${host}"
+      #       ];
+      #       specialArgs = { inherit inputs; };
+      #     };
+      #   }) (builtins.attrNames (builtins.readDir "${ROOT_DIR}/hosts/nixos"))
+      # );
     };
 }
