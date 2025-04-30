@@ -21,10 +21,14 @@
     };
   };
 
-  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs: {
-    darwinConfigurations.kitsune = nix-darwin.lib.darwinSystem {
+  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs: 
+  let 
+    HOSTNAME = builtins.getEnv "HOSTNAME";
+  in
+  {
+    darwinConfigurations."HOSTNAME" = nix-darwin.lib.darwinSystem {
       modules = [
-        ./hosts/darwin/kitsune/configuration.nix
+        "./hosts/darwin/${HOSTNAME}/configuration.nix"
       ];
       specialArgs = {
         inherit inputs;
