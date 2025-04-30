@@ -21,17 +21,27 @@
     };
   };
 
-  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs: 
+  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs:
   let 
-    HOSTNAME = builtins.getEnv "HOSTNAME";
-  in
-  {
-    darwinConfigurations."HOSTNAME" = nix-darwin.lib.darwinSystem {
-      modules = [
-        "./hosts/darwin/${HOSTNAME}/configuration.nix"
-      ];
-      specialArgs = {
-        inherit inputs;
+    mkHost = { host, arch, os, ... }: {
+      darwinConfigurations."${host}" = nix-darwin.lib.darwinSystem {
+        system = "${arch}-darwin";
+        modules = [
+          ./hosts/common/default.nix
+          ./hosts/${arch}/${os}/${host}.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+    };
+  in 
+   {
+    darwinConfigurations = {
+      kitsune = mkHost {
+        host = "kitsune";
+        arch = "aarch64";
+        os = "darwin";
       };
     };
   };
