@@ -11,6 +11,10 @@
   ...
 }:
 {
+  imports = [
+    ../common/default.nix
+  ];
+
   homebrew = {
     enable = true;
 
@@ -30,6 +34,7 @@
 
     casks = [
       "adguard"
+      "android-platform-tools"
       "arc"
       "brave-browser"
       "crossover"
@@ -62,7 +67,6 @@
       "ddev/ddev"
     ];
   };
-
 
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
