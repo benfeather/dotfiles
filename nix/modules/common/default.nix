@@ -1,0 +1,41 @@
+{
+  inputs,
+  ...
+}:
+{
+  environment = {
+    systemPackages = [
+      pkgs.nixfmt-rfc-style
+      pkgs.oh-my-zsh
+      pkgs.zsh
+      pkgs.zsh-powerlevel10k
+    ];
+  };
+
+  nix = {
+    settings = {
+      experimental-features = "flakes nix-command";
+    };
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  programs = {
+    bash.enable = false;
+
+    fish.enable = false;
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+    };
+  };
+
+  system = {
+    stateVersion = 6;
+  };
+}

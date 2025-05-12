@@ -11,19 +11,7 @@
   ...
 }:
 {
-  imports = [
-    ../common/default.nix
-  ];
-
   homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "zap";
-      upgrade = true;
-    };
-
     brews = [
       "ddev"
       "docker"
@@ -60,19 +48,12 @@
       "affinity-photo" = 1616822987;
       "whatsapp" = 310633997;
       "unarchiver" = 425424353;
-      "xcode" = 497799835;
     };
 
     taps = [
       "ddev/ddev"
     ];
   };
-
-  nixpkgs = {
-    hostPlatform = "aarch64-darwin";
-  };
-  
-  system.stateVersion = 6;
 
   users = {
     users = {

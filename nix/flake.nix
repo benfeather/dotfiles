@@ -23,26 +23,21 @@
 
   outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs:
   let 
-    mkHost = { host, arch, os, ... }: {
-      darwinConfigurations."${host}" = nix-darwin.lib.darwinSystem {
-        system = "${arch}-darwin";
-        modules = [
-          ./hosts/common/default.nix
-          ./hosts/${arch}/${os}/${host}.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
-  in 
-   {
-    darwinConfigurations = {
-      kitsune = mkHost {
-        host = "kitsune";
+    mkHost = import ./lib/mkHost.nix { inherit inputs; };
+
+    darwinHosts = {
+      "kitsune" = mkHost {
+        hostname = "kitsune";
         arch = "aarch64";
-        os = "darwin";
+        username = "ben";
       };
     };
+
+    linuxHosts = {};
+  in 
+  {
+    inherit darwinHosts linuxHosts;
+
+    darwinConfigurations = builtins.mapAttrs (name: config: config) darwinHosts;
   };
 }

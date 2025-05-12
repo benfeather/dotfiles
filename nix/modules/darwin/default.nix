@@ -3,6 +3,24 @@
   ...
 }:
 {
+  homebrew = {
+    enable = true;
+
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
+
+    masApps = {
+      "xcode" = 497799835;
+    };
+  };
+
+  nixpkgs = {
+    hostPlatform = "aarch64-darwin";
+  };
+
   system = {
     defaults = {
       dock = {
