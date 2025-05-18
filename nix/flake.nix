@@ -12,15 +12,15 @@
     let
       hosts = [
         {
-          hostname = "kitsune";
+          name = "kitsune";
+          user = "ben";
           arch = "aarch64";
-          username = "ben";
           os = "darwin";
         }
         {
-          hostname = "fennec";
+          name = "fennec";
+          user = "ben";
           arch = "x86_64";
-          username = "ben";
           os = "linux";
         }
       ];
@@ -30,13 +30,13 @@
           builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
         in
           {
-            name = host.hostname;
+            name = host.name;
             value = builder {
               system = "${host.arch}-${host.os}";
               modules = [
                 ./modules/common/default.nix
                 ./modules/common/${host.os}.nix
-                ./hosts/${host.os}/${host.hostname}.nix
+                ./hosts/${host.os}/${host.name}.nix
               ];
               specialArgs = {
                 inherit host;

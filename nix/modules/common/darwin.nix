@@ -70,6 +70,6 @@
       enableKeyMapping = true;
     };
 
-    primaryUser = host.username;
+    primaryUser = host.user;
   };
 }

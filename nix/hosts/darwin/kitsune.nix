@@ -47,8 +47,4 @@
       "ddev/ddev"
     ];
   };
-
-  users.users.${host.username} = {
-    shell = pkgs.zsh;
-  };
 }

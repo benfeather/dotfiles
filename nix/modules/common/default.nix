@@ -40,4 +40,8 @@
   system = {
     stateVersion = 6;
   };
+
+  users.users.${host.user} = {
+    shell = pkgs.zsh;
+  };
 }
