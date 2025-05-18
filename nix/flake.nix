@@ -8,24 +8,29 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, darwin, nixpkgs, ... } @ inputs: {
-    macHosts = [
-      {
-        hostname = "kitsune";
-        system = "aarch64-darwin";
-        username = "ben";
-      }
-    ];
-
-    darwinConfigurations = builtins.mapAttrs (name: config: {
-      inherit name;
-      config = {
-        hostname = config.hostname;
-        system = config.system;
-        modules = [
-          ./darwin.nix
-        ];
-      };
-    }) macHosts;
-  };
+  outputs = { self, darwin, nixpkgs, ... }@inputs:
+    let
+      macHosts = [
+        {
+          hostname = "kitsune";
+          system = "aarch64-darwin";
+          username = "ben";
+        }
+      ];
+    in
+    {
+      darwinConfigurations = builtins.listToAttrs (map (host: {
+        name = host.hostname;
+        value = darwin.lib.darwinSystem {
+          system = host.system;
+          modules = [
+            ./darwin.nix
+          ];
+          specialArgs = {
+            inherit (host) hostname username;
+            inherit inputs;
+          };
+        };
+      }) macHosts);
+    };
 }
