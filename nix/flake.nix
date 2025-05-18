@@ -2,42 +2,30 @@
   description = "Ben's MacOS and NixOS configurations";
 
   inputs = {
-    home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
-    };
-
-    nix-darwin = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-darwin/nix-darwin/master";
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-    };
-
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
+    darwin.url = "github:nix-darwin/nix-darwin/master";
+    home-manager.url = "github:nix-community/home-manager";
+    homebrew.url = "github:zhaofengli/nix-homebrew";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, home-manager, ... } @ inputs:
-  let 
-    mkHost = import ./lib/mkHost.nix { inherit inputs; };
-
-    darwinHosts = {
-      "kitsune" = mkHost {
+  outputs = { self, darwin, nixpkgs, ... } @ inputs: {
+    macHosts = [
+      {
         hostname = "kitsune";
-        arch = "aarch64";
+        system = "aarch64-darwin";
         username = "ben";
+      }
+    ];
+
+    darwinConfigurations = builtins.mapAttrs (name: config: {
+      inherit name;
+      config = {
+        hostname = config.hostname;
+        system = config.system;
+        modules = [
+          ./darwin.nix
+        ];
       };
-    };
-
-    linuxHosts = {};
-  in 
-  {
-    inherit darwinHosts linuxHosts;
-
-    darwinConfigurations = builtins.mapAttrs (name: config: config) darwinHosts;
+    }) macHosts;
   };
 }
