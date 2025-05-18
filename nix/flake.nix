@@ -24,43 +24,35 @@
           os = "linux";
         }
       ];
+
+      mkHost = host:
+        let
+          builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+        in
+          {
+            name = host.hostname;
+            value = builder {
+              system = "${host.arch}-${host.os}";
+              modules = [
+                ./modules/common/default.nix
+                ./modules/common/${host.os}.nix
+                ./hosts/${host.os}/${host.hostname}.nix
+              ];
+              specialArgs = {
+                inherit host;
+                inherit inputs;
+              };
+            };
+          };
     in
     {
       darwinConfigurations = builtins.listToAttrs (
-        map (host: {
-          name = host.hostname;
-          value = darwin.lib.darwinSystem {
-            system = "${host.arch}-${host.os}";
-            modules = [
-              ./modules/common/default.nix
-              ./modules/common/darwin.nix
-              ./hosts/darwin/${host.hostname}.nix
-            ];
-            specialArgs = {
-              inherit host;
-              inherit inputs;
-            };
-          };
-        })
+        map (host: mkHost host)
         (builtins.filter (h: h.os == "darwin") hosts)
       );
 
       nixosConfigurations = builtins.listToAttrs (
-        map (host: {
-          name = host.hostname;
-          value = nixpkgs.lib.nixosSystem {
-            system = "${host.arch}-${host.os}";
-            modules = [
-              ./modules/common/default.nix
-              ./modules/common/linux.nix
-              ./hosts/linux/${host.hostname}.nix
-            ];
-            specialArgs = {
-              inherit host;
-              inherit inputs;
-            };
-          };
-        })
+        map (host: mkHost host)
         (builtins.filter (h: h.os == "linux") hosts)
       );
     };
