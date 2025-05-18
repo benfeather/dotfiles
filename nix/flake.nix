@@ -10,10 +10,10 @@
 
   outputs =
     inputs@{
-      self,
       darwin,
       home,
       nixpkgs,
+      self,
       ...
     }:
     let
