@@ -8,7 +8,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, ... }:
+  outputs = inputs@{ self, darwin, home-manager, nixpkgs, ... }:
     let
       lib = nixpkgs.lib;
 
@@ -36,8 +36,8 @@
             value = builder {
               system = "${host.arch}-${host.os}";
               modules = [
-                ./modules/common/default.nix
-                ./modules/common/${host.os}.nix
+                ./modules/shared/default.nix
+                ./modules/${host.os}/default.nix
                 ./hosts/${host.os}/${host.name}.nix
               ];
               specialArgs = {

@@ -1,4 +1,5 @@
 {
+  home-manager,
   host,
   pkgs,
   ...
@@ -42,6 +43,13 @@
   };
 
   users.users.${host.user} = {
+    home =  if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
+    name = host.user;
     shell = pkgs.zsh;
   };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  }
 }
