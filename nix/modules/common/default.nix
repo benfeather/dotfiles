@@ -23,6 +23,7 @@
     config = {
       allowUnfree = true;
     };
+    hostPlatform = "${host.arch}-${host.os}";
   };
 
   programs = {

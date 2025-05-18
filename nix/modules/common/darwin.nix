@@ -17,10 +17,6 @@
     };
   };
 
-  nixpkgs = {
-    hostPlatform = host.platform;
-  };
-
   system = {
     defaults = {
       dock = {

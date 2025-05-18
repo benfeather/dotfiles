@@ -10,29 +10,58 @@
 
   outputs = { self, darwin, nixpkgs, ... }@inputs:
     let
-      macHosts = [
+      hosts = [
         {
           hostname = "kitsune";
-          platform = "aarch64-darwin";
+          arch = "aarch64";
           username = "ben";
+          os = "darwin";
+        }
+        {
+          hostname = "fennec";
+          arch = "x86_64";
+          username = "ben";
+          os = "linux";
         }
       ];
     in
     {
-      darwinConfigurations = builtins.listToAttrs (map (host: {
-        name = host.hostname;
-        value = darwin.lib.darwinSystem {
-          system = host.platform;
-          modules = [ 
-            ./modules/common/default.nix
-            ./modules/common/darwin.nix
-            ./hosts/darwin/${host.hostname}.nix
-          ];
-          specialArgs = {
-            inherit host;
-            inherit inputs;
+      darwinConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host.hostname;
+          value = darwin.lib.darwinSystem {
+            system = "${host.arch}-${host.os}";
+            modules = [
+              ./modules/common/default.nix
+              ./modules/common/darwin.nix
+              ./hosts/darwin/${host.hostname}.nix
+            ];
+            specialArgs = {
+              inherit host;
+              inherit inputs;
+            };
           };
-        };
-      }) macHosts);
+        })
+        (builtins.filter (h: h.os == "darwin") hosts)
+      );
+
+      nixosConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host.hostname;
+          value = nixpkgs.lib.nixosSystem {
+            system = "${host.arch}-${host.os}";
+            modules = [
+              ./modules/common/default.nix
+              ./modules/common/linux.nix
+              ./hosts/linux/${host.hostname}.nix
+            ];
+            specialArgs = {
+              inherit host;
+              inherit inputs;
+            };
+          };
+        })
+        (builtins.filter (h: h.os == "linux") hosts)
+      );
     };
 }
