@@ -3,12 +3,12 @@
 
   inputs = {
     darwin.url = "github:nix-darwin/nix-darwin/master";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home.url = "github:nix-community/home-manager/release-25.05";
     homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, darwin, home-manager, nixpkgs, ... }:
+  outputs = inputs@{ self, darwin, home, nixpkgs, ... }:
     let
       lib = nixpkgs.lib;
 
@@ -31,7 +31,7 @@
         let
           builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
           homeDirectory = if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
-          homeManagerModule = if host.os == "darwin" then home-manager.darwinModules.home-manager else home-manager.nixosModules.home-manager;
+          homeManagerModule = if host.os == "darwin" then home.darwinModules.home-manager else home.nixosModules.home-manager;
         in
           {
             name = host.name;
