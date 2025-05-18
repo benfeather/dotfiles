@@ -48,8 +48,10 @@
     shell = pkgs.zsh;
   };
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  }
+  # home-manager = {
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+
+  #   users."${host.user}" = import ./home/${host.user}/default.nix;
+  # };
 }

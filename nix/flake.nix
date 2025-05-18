@@ -30,12 +30,14 @@
       mkHost = host:
         let
           builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+          homeManagerModule = if host.os == "darwin" then home-manager.darwinModules.home-manager else home-manager.nixosModules.home-manager;
         in
           {
             name = host.name;
             value = builder {
               system = "${host.arch}-${host.os}";
               modules = [
+                homeManagerModule
                 ./modules/shared/default.nix
                 ./modules/${host.os}/default.nix
                 ./hosts/${host.os}/${host.name}.nix
