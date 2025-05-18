@@ -9,7 +9,6 @@
       "ddev"
       "docker"
       "docker-compose"
-      "git"
       "mkcert"
     ];
 

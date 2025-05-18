@@ -6,11 +6,13 @@
 }:
 {
   environment = {
-    systemPackages = [
-      pkgs.nixfmt-rfc-style
-      pkgs.oh-my-zsh
-      pkgs.zsh
-      pkgs.zsh-powerlevel10k
+    systemPackages = with pkgs; [
+      git
+      home-manager
+      nixfmt-rfc-style
+      oh-my-zsh
+      zsh
+      zsh-powerlevel10k
     ];
   };
 
@@ -45,7 +47,7 @@
 
   users = {
     users.${host.user} = {
-      home =  homeDirectory;
+      home = homeDirectory;
       name = host.user;
       shell = pkgs.zsh;
     };

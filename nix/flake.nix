@@ -8,7 +8,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, darwin, home, nixpkgs, ... }:
+  outputs =
+    inputs@{
+      self,
+      darwin,
+      home,
+      nixpkgs,
+      ...
+    }:
     let
       lib = nixpkgs.lib;
 
@@ -27,48 +34,49 @@
         }
       ];
 
-      mkHost = host:
+      mkHost =
+        host:
         let
           builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
           homeDirectory = if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
-          homeManagerModule = if host.os == "darwin" then home.darwinModules.home-manager else home.nixosModules.home-manager;
+          homeManager =
+            if host.os == "darwin" then home.darwinModules.home-manager else home.nixosModules.home-manager;
         in
-          {
-            name = host.name;
-            value = builder {
-              system = "${host.arch}-${host.os}";
-              modules = [
-                ./modules/shared/default.nix
-                ./modules/${host.os}/default.nix
-                ./hosts/${host.os}/${host.name}.nix
-                homeManagerModule
-                {
-                  home-manager = {
-                    users.${host.user} = import ./modules/home/${host.user}/default.nix;
+        {
+          name = host.name;
+          value = builder {
+            system = "${host.arch}-${host.os}";
+            modules = [
+              ./modules/shared/default.nix
+              ./modules/${host.os}/default.nix
+              ./hosts/${host.os}/${host.name}.nix
+              homeManager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
 
-                    extraSpecialArgs = {
-                      inherit homeDirectory;
-                      inherit host;
-                      inherit inputs;
-                    };
+                  users.${host.user} = import ./modules/home/${host.user}/default.nix;
+
+                  extraSpecialArgs = {
+                    inherit homeDirectory;
+                    inherit host;
+                    inherit inputs;
                   };
-                }
-              ];
-              specialArgs = {
-                inherit homeDirectory;
-                inherit host;
-                inherit inputs;
-              };
+                };
+              }
+            ];
+            specialArgs = {
+              inherit homeDirectory;
+              inherit host;
+              inherit inputs;
             };
           };
+        };
     in
     {
-      darwinConfigurations = lib.listToAttrs (
-        lib.map mkHost (lib.filter (h: h.os == "darwin") hosts)
-      );
+      darwinConfigurations = lib.listToAttrs (lib.map mkHost (lib.filter (h: h.os == "darwin") hosts));
 
-      nixosConfigurations = lib.listToAttrs (
-        lib.map mkHost (lib.filter (h: h.os == "linux") hosts)
-      );
+      nixosConfigurations = lib.listToAttrs (lib.map mkHost (lib.filter (h: h.os == "linux") hosts));
     };
 }
