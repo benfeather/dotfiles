@@ -14,6 +14,13 @@
     ];
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    users."${host.user}" = import ./home/default.nix;
+  };
+
   nix = {
     settings = {
       experimental-features = "flakes nix-command";
@@ -42,16 +49,11 @@
     stateVersion = 6;
   };
 
-  users.users.${host.user} = {
-    home =  if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
-    name = host.user;
-    shell = pkgs.zsh;
+  users = {
+    users.${host.user} = {
+      home =  if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
+      name = host.user;
+      shell = pkgs.zsh;
+    };
   };
-
-  # home-manager = {
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-
-  #   users."${host.user}" = import ./home/${host.user}/default.nix;
-  # };
 }
