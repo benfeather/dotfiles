@@ -37,10 +37,15 @@
             value = builder {
               system = "${host.arch}-${host.os}";
               modules = [
-                homeManagerModule
                 ./modules/shared/default.nix
                 ./modules/${host.os}/default.nix
                 ./hosts/${host.os}/${host.name}.nix
+                homeManagerModule
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.${host.user} = import ./modules/home/${host.user}/default.nix;
+                }
               ];
               specialArgs = {
                 inherit host;

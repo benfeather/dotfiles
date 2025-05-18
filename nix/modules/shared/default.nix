@@ -14,13 +14,6 @@
     ];
   };
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-
-    users."${host.user}" = import ./home/default.nix;
-  };
-
   nix = {
     settings = {
       experimental-features = "flakes nix-command";
