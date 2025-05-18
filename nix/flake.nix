@@ -24,7 +24,8 @@
         value = darwin.lib.darwinSystem {
           system = host.system;
           modules = [
-            ./darwin.nix
+            ./hosts/common/default.nix
+            ./hosts/darwin/common/default.nix
           ];
           specialArgs = {
             inherit (host) hostname username;
