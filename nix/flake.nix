@@ -3,7 +3,7 @@
 
   inputs = {
     darwin.url = "github:nix-darwin/nix-darwin/master";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
@@ -30,6 +30,7 @@
       mkHost = host:
         let
           builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+          homeDirectory = if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
           homeManagerModule = if host.os == "darwin" then home-manager.darwinModules.home-manager else home-manager.nixosModules.home-manager;
         in
           {
@@ -42,12 +43,19 @@
                 ./hosts/${host.os}/${host.name}.nix
                 homeManagerModule
                 {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.${host.user} = import ./modules/home/${host.user}/default.nix;
+                  home-manager = {
+                    users.${host.user} = import ./modules/home/${host.user}/default.nix;
+
+                    extraSpecialArgs = {
+                      inherit homeDirectory;
+                      inherit host;
+                      inherit inputs;
+                    };
+                  };
                 }
               ];
               specialArgs = {
+                inherit homeDirectory;
                 inherit host;
                 inherit inputs;
               };

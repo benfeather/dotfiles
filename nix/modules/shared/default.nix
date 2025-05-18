@@ -1,5 +1,5 @@
 {
-  home-manager,
+  homeDirectory,
   host,
   pkgs,
   ...
@@ -24,6 +24,7 @@
     config = {
       allowUnfree = true;
     };
+
     hostPlatform = "${host.arch}-${host.os}";
   };
 
@@ -44,7 +45,7 @@
 
   users = {
     users.${host.user} = {
-      home =  if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
+      home =  homeDirectory;
       name = host.user;
       shell = pkgs.zsh;
     };
