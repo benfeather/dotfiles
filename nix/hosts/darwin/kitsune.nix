@@ -1,13 +1,5 @@
 {
-  inputs,
-  lib,
-  config,
-  pkgs,
-  self, 
-  nix-darwin, 
-  nix-homebrew, 
-  nixpkgs, 
-  home-manager,
+  host,
   ...
 }:
 {
@@ -55,11 +47,7 @@
     ];
   };
 
-  users = {
-    users = {
-      ben = {
-        shell = pkgs.zsh;
-      };
-    };
+  users.users.${host.username} = {
+    shell = pkgs.zsh;
   };
 }

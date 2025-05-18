@@ -13,7 +13,7 @@
       macHosts = [
         {
           hostname = "kitsune";
-          system = "aarch64-darwin";
+          platform = "aarch64-darwin";
           username = "ben";
         }
       ];
@@ -22,13 +22,14 @@
       darwinConfigurations = builtins.listToAttrs (map (host: {
         name = host.hostname;
         value = darwin.lib.darwinSystem {
-          system = host.system;
-          modules = [
-            ./hosts/common/default.nix
-            ./hosts/darwin/common/default.nix
+          system = host.platform;
+          modules = [ 
+            ./modules/common/default.nix
+            ./modules/common/darwin.nix
+            ./hosts/darwin/${host.hostname}.nix
           ];
           specialArgs = {
-            inherit (host) hostname username;
+            inherit host;
             inherit inputs;
           };
         };

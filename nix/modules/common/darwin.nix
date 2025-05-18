@@ -1,5 +1,5 @@
 {
-  inputs,
+  host,
   ...
 }:
 {
@@ -18,7 +18,7 @@
   };
 
   nixpkgs = {
-    hostPlatform = "aarch64-darwin";
+    hostPlatform = host.platform;
   };
 
   system = {
@@ -73,5 +73,7 @@
     keyboard = {
       enableKeyMapping = true;
     };
+
+    primaryUser = host.username;
   };
 }

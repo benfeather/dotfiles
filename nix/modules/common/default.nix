@@ -1,5 +1,6 @@
 {
-  inputs,
+  host,
+  pkgs,
   ...
 }:
 {
