@@ -8,8 +8,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, darwin, nixpkgs, ... }@inputs:
+  outputs = inputs@{ self, darwin, nixpkgs, ... }:
     let
+      lib = nixpkgs.lib;
+
       hosts = [
         {
           name = "kitsune";
@@ -46,14 +48,12 @@
           };
     in
     {
-      darwinConfigurations = builtins.listToAttrs (
-        map (host: mkHost host)
-        (builtins.filter (h: h.os == "darwin") hosts)
+      darwinConfigurations = lib.listToAttrs (
+        lib.map mkHost (lib.filter (h: h.os == "darwin") hosts)
       );
 
-      nixosConfigurations = builtins.listToAttrs (
-        map (host: mkHost host)
-        (builtins.filter (h: h.os == "linux") hosts)
+      nixosConfigurations = lib.listToAttrs (
+        lib.map mkHost (lib.filter (h: h.os == "linux") hosts)
       );
     };
 }
