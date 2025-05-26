@@ -48,7 +48,7 @@
             system = "${host.arch}-${host.os}";
             modules = [
               ./modules/shared/default.nix
-              ./modules/${host.os}/default.nix
+              ./modules/shared/${host.os}.nix
               ./hosts/${host.os}/${host.name}.nix
               homeManager
               {
@@ -56,7 +56,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
 
-                  users.${host.user} = import ./modules/home/${host.user}/default.nix;
+                  users.${host.user} = import ./modules/home/${host.user}.nix;
 
                   extraSpecialArgs = {
                     inherit homeDirectory;
