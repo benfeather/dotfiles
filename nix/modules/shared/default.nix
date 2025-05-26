@@ -16,6 +16,18 @@
     ];
   };
 
+  fonts = {
+    packages = with pkgs; [
+      fira-code
+      open-sans
+      roboto
+    ];
+  };
+
+  networking = {
+    hostName = host.name;
+  };
+
   nix = {
     settings = {
       experimental-features = "flakes nix-command";
@@ -43,6 +55,10 @@
 
   system = {
     stateVersion = 6;
+  };
+
+  time = {
+    timeZone = "Pacific/Auckland";
   };
 
   users = {

@@ -20,10 +20,6 @@
       "crossover"
       "cyberduck"
       "firefox@developer-edition"
-      "font-adwaita"
-      "font-fira-code"
-      "font-open-sans"
-      "font-roboto"
       "github"
       "godot"
       "google-chrome"
@@ -48,4 +44,30 @@
       "ddev/ddev"
     ];
   };
+
+  system.defaults.dock.persistent-apps = [
+    { app = "/Applications/Arc.app/"; }
+    { app = "/Applications/Brave\ Browser.app/"; }
+    {
+      spacer = {
+        small = true;
+      };
+    }
+    { app = "/Applications/Warp.app/"; }
+    { app = "/Applications/Visual\ Studio\ Code.app/"; }
+    { app = "/Applications/Cyberduck.app/"; }
+    { app = "/Applications/Sequel\ Ace.app/"; }
+    { app = "/Applications/OrbStack.app/"; }
+    { app = "/Applications/GitHub\ Desktop.app/"; }
+    { app = "/Applications/Godot.app/"; }
+    {
+      spacer = {
+        small = true;
+      };
+    }
+    { app = "/Applications/Spotify.app/"; }
+    { app = "/Applications/WhatsApp.app/"; }
+    { app = "/Applications/Obsidian.app/"; }
+    { app = "/Applications/CrossOver.app/"; }
+  ];
 }
