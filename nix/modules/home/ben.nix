@@ -6,19 +6,19 @@
 }:
 {
   home = {
-    username = host.user;
     homeDirectory = homeDirectory;
     stateVersion = "25.05";
+    username = host.user;
   };
 
   programs = {
     git = {
       enable = true;
-      userEmail = "contact@benfeather.dev";
-      userName = "Ben Feather";
       extraConfig = {
         init.defaultBranch = "master";
       };
+      userEmail = "contact@benfeather.dev";
+      userName = "Ben Feather";
     };
 
     zsh = {

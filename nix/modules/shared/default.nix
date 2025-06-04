@@ -26,9 +26,19 @@
 
   networking = {
     hostName = host.name;
+
+    networkmanager = {
+      enable = true;
+    };
   };
 
   nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-tha 7d";
+    };
+
     settings = {
       experimental-features = "flakes nix-command";
     };
@@ -55,12 +65,10 @@
     timeZone = "Pacific/Auckland";
   };
 
-  users = {
-    users.${host.user} = {
-      home = homeDirectory;
-      isNormalUser = true;
-      name = host.user;
-      shell = pkgs.zsh;
-    };
+  users.users.${host.user} = {
+    home = homeDirectory;
+    isNormalUser = true;
+    name = host.user;
+    shell = pkgs.zsh;
   };
 }
