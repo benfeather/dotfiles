@@ -78,5 +78,7 @@
     };
 
     primaryUser = host.user;
+
+    stateVersion = 6;
   };
 }

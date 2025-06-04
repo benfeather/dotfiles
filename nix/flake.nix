@@ -49,7 +49,7 @@
             modules = [
               ./modules/shared/default.nix
               ./modules/shared/${host.os}.nix
-              ./hosts/${host.os}/${host.name}.nix
+              ./hosts/${host.os}/${host.name}/configuration.nix
               homeManager
               {
                 home-manager = {

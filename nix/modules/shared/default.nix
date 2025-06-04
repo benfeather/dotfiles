@@ -43,18 +43,12 @@
   };
 
   programs = {
-    bash.enable = false;
-
     fish.enable = false;
 
     zsh = {
       enable = true;
       enableCompletion = true;
     };
-  };
-
-  system = {
-    stateVersion = 6;
   };
 
   time = {
@@ -64,6 +58,7 @@
   users = {
     users.${host.user} = {
       home = homeDirectory;
+      isNormalUser = true;
       name = host.user;
       shell = pkgs.zsh;
     };
