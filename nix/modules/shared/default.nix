@@ -26,10 +26,6 @@
 
   networking = {
     hostName = host.name;
-
-    networkmanager = {
-      enable = true;
-    };
   };
 
   nix = {
