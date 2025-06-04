@@ -63,7 +63,6 @@
 
   users.users.${host.user} = {
     home = homeDirectory;
-    isNormalUser = true;
     name = host.user;
     shell = pkgs.zsh;
   };
