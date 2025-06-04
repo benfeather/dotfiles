@@ -10,15 +10,19 @@
   ];
 
   hardware = {
-    nvidia = {
+    graphics = {
       enable = true;
-      modesetting.enable = true;
     };
 
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32bit = true;
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
     };
   };
 
@@ -38,7 +42,7 @@
     };
 
     grub = {
-      configurationLimit = 5;
+      configurationLimit = 1;
       device = "nodev";
       efiSupport = true;
       enable = true;
@@ -87,7 +91,6 @@
 
   environment.systemPackages = with pkgs; [
     bottles
-    gnome-shell-extension-dash-to-dock
     heroic
     lutris
     mangohud
