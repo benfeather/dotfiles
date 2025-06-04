@@ -31,7 +31,7 @@
   nix = {
     gc = {
       automatic = true;
-      dates = "daily";
+      interval = "daily";
       options = "--delete-older-tha 7d";
     };
 
