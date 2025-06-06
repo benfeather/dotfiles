@@ -2,6 +2,8 @@
 	"cSpell.words": [
 		"nixos",
 		"nixpkgs",
-		"pkgs"
+		"pipewire",
+		"pkgs",
+		"pulseaudio"
 	]
 }

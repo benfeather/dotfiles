@@ -4,49 +4,49 @@
   ...
 }:
 {
-  homebrew = {
-    brews = [
-      "ddev"
-      "docker"
-      "docker-compose"
-      "mkcert"
-    ];
+  # Homebrew
+  homebrew.brews = [
+    "ddev"
+    "docker"
+    "docker-compose"
+    "mkcert"
+  ];
 
-    casks = [
-      "adguard"
-      "android-platform-tools"
-      "arc"
-      "brave-browser"
-      "crossover"
-      "cyberduck"
-      "firefox@developer-edition"
-      "github"
-      "godot"
-      "google-chrome"
-      "jordanbaird-ice"
-      "obsidian"
-      "orbstack"
-      "proton-drive"
-      "setapp"
-      "sequel-ace"
-      "spotify"
-      "visual-studio-code"
-      "warp"
-      "zen"
-    ];
+  homebrew.casks = [
+    "adguard"
+    "android-platform-tools"
+    "arc"
+    "brave-browser"
+    "crossover"
+    "cyberduck"
+    "firefox@developer-edition"
+    "github"
+    "godot"
+    "google-chrome"
+    "jordanbaird-ice"
+    "obsidian"
+    "orbstack"
+    "proton-drive"
+    "setapp"
+    "sequel-ace"
+    "spotify"
+    "visual-studio-code"
+    "warp"
+    "zen"
+  ];
 
-    masApps = {
-      "affinity-designer" = 1616831348;
-      "affinity-photo" = 1616822987;
-      "whatsapp" = 310633997;
-      "unarchiver" = 425424353;
-    };
-
-    taps = [
-      "ddev/ddev"
-    ];
+  homebrew.masApps = {
+    "affinity-designer" = 1616831348;
+    "affinity-photo" = 1616822987;
+    "whatsapp" = 310633997;
+    "unarchiver" = 425424353;
   };
 
+  homebrew.taps = [
+    "ddev/ddev"
+  ];
+
+  # System Dock Configuration
   system.defaults.dock.persistent-apps = [
     { app = "/Applications/Arc.app"; }
     { app = "/Applications/Zen.app"; }

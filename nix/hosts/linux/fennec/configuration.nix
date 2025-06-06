@@ -1,6 +1,5 @@
 {
   config,
-  host,
   pkgs,
   ...
 }:
@@ -9,93 +8,48 @@
     ./hardware-configuration.nix
   ];
 
-  hardware = {
-    graphics = {
-      enable = true;
-    };
+  # Boot Loader
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
-    nvidia = {
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      powerManagement = {
-        enable = true;
-        finegrained = true;
-      };
-    };
-  };
-
-  programs = {
-    gamemode.enable = true;
-
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
-  };
-
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
-
-    grub = {
-      configurationLimit = 1;
-      device = "nodev";
-      efiSupport = true;
-      enable = true;
-      useOSProber = true;
-    };
-
-    systemd-boot.enable = false;
-  };
-
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_NZ.UTF-8";
-    LC_IDENTIFICATION = "en_NZ.UTF-8";
-    LC_MEASUREMENT = "en_NZ.UTF-8";
-    LC_MONETARY = "en_NZ.UTF-8";
-    LC_NAME = "en_NZ.UTF-8";
-    LC_NUMERIC = "en_NZ.UTF-8";
-    LC_PAPER = "en_NZ.UTF-8";
-    LC_TELEPHONE = "en_NZ.UTF-8";
-    LC_TIME = "en_NZ.UTF-8";
-  };
-
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.printing.enable = true;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.users.${host.user} = {
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-  };
-
+  # Environment Packages
   environment.systemPackages = with pkgs; [
-    bottles
+    gnomeExtensions.dash-to-dock
     heroic
     lutris
     mangohud
-    protonup-qt
   ];
 
+  # Programs
+  programs.firefox.enable = true;
+  programs.gamemode.enable = true;
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+
+  # Hardware
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.nvidiaSettings = true;
+  hardware.nvidia.open = false;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.powerManagement.enable = false;
+  hardware.nvidia.powerManagement.finegrained = false;
+
+  # Security
+  security.rtkit.enable = true;
+
+  # Services
+  services.pipewire.enable = true;
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
+  services.printing.enable = true;
+  services.pulseaudio.enable = false;
+  services.xserver.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # System
   system.stateVersion = "25.05";
 }

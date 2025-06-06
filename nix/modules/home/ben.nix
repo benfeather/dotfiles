@@ -5,33 +5,24 @@
   ...
 }:
 {
-  home = {
-    homeDirectory = homeDirectory;
-    stateVersion = "25.05";
-    username = host.user;
-  };
+  # Home
+  home.homeDirectory = homeDirectory;
+  home.stateVersion = "25.05";
+  home.username = host.user;
 
-  programs = {
-    git = {
-      enable = true;
-      extraConfig = {
-        init.defaultBranch = "master";
-      };
-      userEmail = "contact@benfeather.dev";
-      userName = "Ben Feather";
-    };
+  # Programs: Git
+  programs.git.enable = true;
+  programs.git.extraConfig.init.defaultBranch = "master";
+  programs.git.userEmail = "contact@benfeather.dev";
+  programs.git.userName = "Ben Feather";
 
-    zsh = {
-      enable = true;
-      oh-my-zsh = {
-        plugins = with pkgs.zshPlugins; [
-          git
-          zsh-autosuggestions
-          zsh-completions
-          zsh-history-substring-search
-          zsh-syntax-highlighting
-        ];
-      };
-    };
-  };
+  # Programs: Zsh
+  programs.zsh.enable = true;
+  programs.zsh.oh-my-zsh.plugins = with pkgs.zshPlugins; [
+    git
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+  ];
 }

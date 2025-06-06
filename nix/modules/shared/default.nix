@@ -5,61 +5,40 @@
   ...
 }:
 {
-  environment = {
-    systemPackages = with pkgs; [
-      git
-      home-manager
-      nixfmt-rfc-style
-      oh-my-zsh
-      zsh
-      zsh-powerlevel10k
-    ];
-  };
+  # Environment Packages
+  environment.systemPackages = with pkgs; [
+    git
+    home-manager
+    nixfmt-rfc-style
+    oh-my-zsh
+    zsh
+    zsh-powerlevel10k
+  ];
 
-  fonts = {
-    packages = with pkgs; [
-      fira-code
-      open-sans
-      roboto
-    ];
-  };
+  # Fonts
+  fonts.packages = with pkgs; [
+    fira-code
+    open-sans
+    roboto
+  ];
 
-  networking = {
-    hostName = host.name;
-  };
+  # Hardware & Networking
+  networking.hostName = host.name;
 
-  nix = {
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 7d";
-    };
+  # Nix & Nixpkgs
+  nix.settings.experimental-features = "flakes nix-command";
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "${host.arch}-${host.os}";
 
-    settings = {
-      experimental-features = "flakes nix-command";
-    };
-  };
+  # Programs
+  programs.fish.enable = false;
+  programs.zsh.enable = true;
+  programs.zsh.enableCompletion = true;
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
+  # Time
+  time.timeZone = "Pacific/Auckland";
 
-    hostPlatform = "${host.arch}-${host.os}";
-  };
-
-  programs = {
-    fish.enable = false;
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-    };
-  };
-
-  time = {
-    timeZone = "Pacific/Auckland";
-  };
-
+  # User Definition (Not Flattened)
   users.users.${host.user} = {
     home = homeDirectory;
     name = host.user;
