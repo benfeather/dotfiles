@@ -5,7 +5,7 @@
   ...
 }:
 {
-  # Environment Packages
+  # Packages
   environment.systemPackages = with pkgs; [
     git
     home-manager
@@ -22,10 +22,10 @@
     roboto
   ];
 
-  # Hardware & Networking
+  # Networking
   networking.hostName = host.name;
 
-  # Nix & Nixpkgs
+  # Nix
   nix.settings.experimental-features = "flakes nix-command";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
@@ -38,7 +38,7 @@
   # Time
   time.timeZone = "Pacific/Auckland";
 
-  # User Definition (Not Flattened)
+  # Users
   users.users.${host.user} = {
     home = homeDirectory;
     name = host.user;

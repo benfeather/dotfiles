@@ -13,9 +13,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
 
-  # Environment Packages
+  # Packages
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.vitals
+    gnome-tweaks
     heroic
     lutris
     mangohud
@@ -44,10 +47,9 @@
   services.pipewire.alsa.support32Bit = true;
   services.pipewire.pulse.enable = true;
   services.printing.enable = true;
-  services.pulseaudio.enable = false;
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # System

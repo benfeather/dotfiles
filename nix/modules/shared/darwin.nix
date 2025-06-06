@@ -3,7 +3,7 @@
   ...
 }:
 {
-  # Homebrew & Mac App Store
+  # Homebrew
   homebrew.enable = true;
   homebrew.masApps = {
     xcode = 497799835;
