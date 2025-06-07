@@ -31,7 +31,6 @@
     "sequel-ace"
     "spotify"
     "visual-studio-code"
-    "warp"
     "zen"
   ];
 
