@@ -5,9 +5,6 @@
 {
   # Homebrew
   homebrew.enable = true;
-  homebrew.masApps = {
-    xcode = 497799835;
-  };
   homebrew.onActivation.autoUpdate = true;
   homebrew.onActivation.cleanup = "zap";
   homebrew.onActivation.upgrade = true;

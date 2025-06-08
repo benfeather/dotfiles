@@ -19,19 +19,16 @@
   programs.zsh = {
     enable = true;
 
-    oh-my-zsh.enable = true;
-    oh-my-zsh.theme = "robbyrussell";
+    oh-my-zsh = {
+      enable = true;
 
-    plugins = with pkgs.zshPlugins; [
-      brew
-      docker
-      docker-compose
-      git
-      git-auto-fetch
-      git-commit
-      zsh-autosuggestions
-      zsh-completions
-      zsh-syntax-highlighting
-    ];
+      plugins = [
+        "zsh-autosuggestions"
+        "zsh-completions"
+        "zsh-syntax-highlighting"
+      ];
+
+      theme = "zsh-powerlevel10k";
+    };
   };
 }

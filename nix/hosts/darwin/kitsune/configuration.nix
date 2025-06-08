@@ -31,14 +31,16 @@
     "sequel-ace"
     "spotify"
     "visual-studio-code"
+    "warp"
     "zen"
   ];
 
   homebrew.masApps = {
-    "affinity-designer" = 1616831348;
-    "affinity-photo" = 1616822987;
-    "whatsapp" = 310633997;
-    "unarchiver" = 425424353;
+    affinity-designer = 1616831348;
+    affinity-photo = 1616822987;
+    whatsapp = 310633997;
+    unarchiver = 425424353;
+    xcode = 497799835;
   };
 
   homebrew.taps = [

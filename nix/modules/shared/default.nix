@@ -11,7 +11,6 @@
     home-manager
     nixfmt-rfc-style
     oh-my-zsh
-    warp-terminal
     zsh
     zsh-powerlevel10k
   ];
