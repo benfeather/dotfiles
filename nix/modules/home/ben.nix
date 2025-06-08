@@ -9,6 +9,7 @@
   home.stateVersion = "25.05";
   home.username = host.user;
 
+  # Programs: Git
   programs.git = {
     enable = true;
     extraConfig.init.defaultBranch = "master";
@@ -16,6 +17,7 @@
     userName = "Ben Feather";
   };
 
+  # Programs: ZSH
   programs.zsh = {
     enable = true;
 
