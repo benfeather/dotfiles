@@ -5,7 +5,7 @@
   ...
 }:
 {
-  # Packages
+  # Environment Packages
   environment.systemPackages = with pkgs; [
     git
     home-manager
@@ -18,7 +18,7 @@
     zsh-syntax-highlighting
   ];
 
-  # Fonts
+  # Font Packages
   fonts.packages = with pkgs; [
     fira-code
     jetbrains-mono
@@ -34,10 +34,14 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
 
-  # Programs
+  # Programs: Fish
   programs.fish.enable = false;
-  programs.zsh.enable = true;
-  programs.zsh.enableCompletion = true;
+
+  # Programs: ZSH
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+  };
 
   # Time
   time.timeZone = "Pacific/Auckland";

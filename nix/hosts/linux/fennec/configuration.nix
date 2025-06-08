@@ -8,39 +8,34 @@
     ./hardware-configuration.nix
   ];
 
-  # Boot Loader
+  # Boot Loader (don't touch this future Ben!)
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
     systemd-boot.configurationLimit = 5;
   };
 
-  # File Systems
-  fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/3BC9CB1B59C8B846";
-    fsType = "ntfs";
-    options = [ "x-gvfs-show" ];
-  };
-
-  # Packages
+  # Environment Packages
   environment.systemPackages = with pkgs; [
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.vitals
     gnome-tweaks
     heroic
+    libratbag
     lutris
     mangohud
+    openrgb-with-all-plugins
+    piper
     vscode
     warp-terminal
   ];
 
-  # Programs
-  programs = {
-    firefox.enable = true;
-    gamemode.enable = true;
-    steam.enable = true;
-    steam.gamescopeSession.enable = true;
+  # File Systems
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-uuid/3BC9CB1B59C8B846";
+    fsType = "ntfs";
+    options = [ "x-gvfs-show" ];
   };
 
   # Hardware
@@ -51,6 +46,14 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
+  };
+
+  # Programs
+  programs = {
+    firefox.enable = true;
+    gamemode.enable = true;
+    steam.enable = true;
+    steam.gamescopeSession.enable = true;
   };
 
   # Security
