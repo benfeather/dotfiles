@@ -9,9 +9,11 @@
   ];
 
   # Boot Loader
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 5;
+  };
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -27,32 +29,44 @@
   ];
 
   # Programs
-  programs.firefox.enable = true;
-  programs.gamemode.enable = true;
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
+  programs = {
+    firefox.enable = true;
+    gamemode.enable = true;
+    steam.enable = true;
+    steam.gamescopeSession.enable = true;
+  };
 
   # Hardware
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.nvidiaSettings = true;
-  hardware.nvidia.open = false;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.powerManagement.enable = false;
-  hardware.nvidia.powerManagement.finegrained = false;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+  };
 
   # Security
   security.rtkit.enable = true;
 
-  # Services
-  services.pipewire.enable = true;
-  services.pipewire.alsa.enable = true;
-  services.pipewire.alsa.support32Bit = true;
-  services.pipewire.pulse.enable = true;
+  # Services: PipeWire
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Services: Printing
   services.printing.enable = true;
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # Services: Wayland/X11
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    videoDrivers = [ "nvidia" ];
+  };
 
   # System
   system.stateVersion = "25.05";

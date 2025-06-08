@@ -7,19 +7,20 @@
 {
   # Packages
   environment.systemPackages = with pkgs; [
-    git
-    home-manager
-    nixfmt-rfc-style
-    oh-my-zsh
-    zsh
-    zsh-powerlevel10k
+    "git"
+    "home-manager"
+    "nixfmt-rfc-style"
+    "oh-my-zsh"
+    "zsh"
+    "zsh-powerlevel10k"
   ];
 
   # Fonts
   fonts.packages = with pkgs; [
-    fira-code
-    open-sans
-    roboto
+    "fira-code"
+    "jetbrains-mono"
+    "open-sans"
+    "roboto"
   ];
 
   # Networking
