@@ -12,7 +12,10 @@
     nixfmt-rfc-style
     oh-my-zsh
     zsh
+    zsh-autosuggestions
+    zsh-completions
     zsh-powerlevel10k
+    zsh-syntax-highlighting
   ];
 
   # Fonts

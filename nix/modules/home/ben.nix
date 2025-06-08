@@ -22,13 +22,11 @@
     oh-my-zsh = {
       enable = true;
 
-      plugins = [
-        "zsh-autosuggestions"
-        "zsh-completions"
-        "zsh-syntax-highlighting"
-      ];
+      plugins = [ ];
 
       theme = "zsh-powerlevel10k";
     };
+
+    plugins = [ ];
   };
 }
