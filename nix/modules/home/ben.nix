@@ -21,12 +21,6 @@
 
     oh-my-zsh = {
       enable = true;
-
-      plugins = [ ];
-
-      theme = "zsh-powerlevel10k";
     };
-
-    plugins = [ ];
   };
 }

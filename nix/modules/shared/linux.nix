@@ -1,5 +1,6 @@
 {
   host,
+  inputs,
   ...
 }:
 {
@@ -30,7 +31,7 @@
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 7d";
 
-  # System: Upgrade
+  # System: Auto Upgrade
   system.autoUpgrade = {
     dates = "daily";
     enable = true;

@@ -3,7 +3,7 @@
 
   inputs = {
     darwin.url = "github:nix-darwin/nix-darwin/master";
-    home.url = "github:nix-community/home-manager/release-25.05";
+    home.url = "github:nix-community/home-manager";
     homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };

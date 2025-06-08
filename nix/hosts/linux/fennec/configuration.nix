@@ -59,6 +59,14 @@
   # Security
   security.rtkit.enable = true;
 
+  # Services: Display Manager and Desktop Manager
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+  };
+
   # Services: PipeWire
   services.pipewire = {
     enable = true;
@@ -67,14 +75,6 @@
     pulse.enable = true;
   };
 
-  # Services: Wayland/X11
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    videoDrivers = [ "nvidia" ];
-  };
-
   # System
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
