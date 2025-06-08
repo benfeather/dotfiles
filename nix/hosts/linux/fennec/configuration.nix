@@ -75,6 +75,9 @@
     pulse.enable = true;
   };
 
+  # Services: Ratbag Daemon
+  services.ratbagd.enable = true;
+
   # System
   system.stateVersion = "25.11";
 }
