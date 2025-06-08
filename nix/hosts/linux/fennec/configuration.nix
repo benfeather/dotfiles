@@ -15,6 +15,7 @@
     systemd-boot.configurationLimit = 5;
   };
 
+  # File Systems
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/3BC9CB1B59C8B846";
     fsType = "ntfs";
