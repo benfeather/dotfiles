@@ -30,6 +30,17 @@
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 7d";
 
+  # System: Upgrade
+  system.autoUpgrade = {
+    dates = "daily";
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+    ];
+  };
+
   # Users
   users.users.${host.user} = {
     extraGroups = [

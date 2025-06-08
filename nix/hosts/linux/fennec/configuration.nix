@@ -67,9 +67,6 @@
     pulse.enable = true;
   };
 
-  # Services: Printing
-  services.printing.enable = true;
-
   # Services: Wayland/X11
   services.xserver = {
     enable = true;

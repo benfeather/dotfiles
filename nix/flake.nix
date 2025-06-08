@@ -5,7 +5,7 @@
     darwin.url = "github:nix-darwin/nix-darwin/master";
     home.url = "github:nix-community/home-manager/release-25.05";
     homebrew.url = "github:zhaofengli/nix-homebrew";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs =
