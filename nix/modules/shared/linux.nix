@@ -4,8 +4,11 @@
   ...
 }:
 {
-  # Hardware
-  hardware.graphics.enable = true;
+  # Hardware: Graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # i18n
   i18n = {

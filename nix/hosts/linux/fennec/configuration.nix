@@ -42,6 +42,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
+    prime.offload.enable = false;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.enable = false;
@@ -52,8 +53,18 @@
   programs = {
     firefox.enable = true;
     gamemode.enable = true;
-    steam.enable = true;
-    steam.gamescopeSession.enable = true;
+    gamescope.enable = true;
+  };
+
+  # Programs: Steam
+  programs.steam = {
+    dedicatedServer.openFirewall = true;
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+    extraPackages = with pkgs; [
+      gamescope
+    ];
   };
 
   # Security
