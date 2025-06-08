@@ -17,15 +17,15 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    "gnomeExtensions.blur-my-shell"
-    "gnomeExtensions.dash-to-dock"
-    "gnomeExtensions.vitals"
-    "gnome-tweaks"
-    "heroic"
-    "lutris"
-    "mangohud"
-    "vscode"
-    "warp-terminal"
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.vitals
+    gnome-tweaks
+    heroic
+    lutris
+    mangohud
+    vscode
+    warp-terminal
   ];
 
   # Programs
