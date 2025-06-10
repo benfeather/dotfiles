@@ -6,7 +6,7 @@
 }:
 {
   home.homeDirectory = homeDirectory;
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
   home.username = host.user;
 
   # Programs: Git
