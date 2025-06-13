@@ -21,16 +21,16 @@
 
       hosts = [
         {
+          name = "fenrir";
+          user = "ben";
+          arch = "x86_64";
+          os = "linux";
+        }
+        {
           name = "kitsune";
           user = "ben";
           arch = "aarch64";
           os = "darwin";
-        }
-        {
-          name = "fennec";
-          user = "ben";
-          arch = "x86_64";
-          os = "linux";
         }
       ];
 
