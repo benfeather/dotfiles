@@ -5,12 +5,7 @@
 }:
 {
   # Homebrew
-  homebrew.brews = [
-    "ddev"
-    "docker"
-    "docker-compose"
-    "mkcert"
-  ];
+  homebrew.brews = [ ];
 
   homebrew.casks = [
     "adguard"
@@ -19,7 +14,6 @@
     "brave-browser"
     "crossover"
     "cyberduck"
-    "firefox@developer-edition"
     "github"
     "godot"
     "google-chrome"
@@ -44,9 +38,7 @@
     xcode = 497799835;
   };
 
-  homebrew.taps = [
-    "ddev/ddev"
-  ];
+  homebrew.taps = [ ];
 
   # System Dock Configuration
   system.defaults.dock.persistent-apps = [
