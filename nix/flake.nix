@@ -2,10 +2,16 @@
   description = "Ben's MacOS and NixOS configurations";
 
   inputs = {
-    darwin.url = "github:nix-darwin/nix-darwin/master";
-    home.url = "github:nix-community/home-manager/archive/release-25.05.tar.gz;";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     homebrew.url = "github:zhaofengli/nix-homebrew";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
   };
 
   outputs =
