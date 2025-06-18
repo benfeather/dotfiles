@@ -17,6 +17,7 @@
 
   # Environment Packages
   environment.systemPackages = with pkgs; [
+    ghostty
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.vitals
@@ -28,7 +29,6 @@
     openrgb-with-all-plugins
     piper
     vscode
-    warp-terminal
   ];
 
   # File Systems

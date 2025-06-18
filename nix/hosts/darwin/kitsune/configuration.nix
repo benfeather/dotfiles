@@ -14,6 +14,7 @@
     "brave-browser"
     "crossover"
     "cyberduck"
+    "ghostty"
     "github"
     "godot"
     "google-chrome"
@@ -50,7 +51,7 @@
         small = true;
       };
     }
-    { app = "/Applications/Warp.app"; }
+    { app = "/Applications/Ghostty.app"; }
     { app = "/Applications/Visual\ Studio\ Code.app"; }
     { app = "/Applications/Cyberduck.app"; }
     { app = "/Applications/Sequel\ Ace.app"; }
