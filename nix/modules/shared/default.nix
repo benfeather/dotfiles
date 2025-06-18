@@ -17,6 +17,7 @@
     nano
     nixfmt-rfc-style
     oh-my-zsh
+    php83
     zsh
     zsh-autosuggestions
     zsh-completions
