@@ -7,12 +7,14 @@
 {
   # Environment Packages
   environment.systemPackages = with pkgs; [
+    bun
     ddev
     docker
     docker-compose
     git
     home-manager
     mkcert
+    nano
     nixfmt-rfc-style
     oh-my-zsh
     zsh
