@@ -17,12 +17,21 @@
     userName = "Ben Feather";
   };
 
+  # Programs: Starship Terminal Prompt
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+    };
+  };
+
   # Programs: ZSH
   programs.zsh = {
     enable = true;
-
-    oh-my-zsh = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
+    initContent = ''
+      eval "$(starship init zsh)"
+    '';
   };
 }

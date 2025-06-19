@@ -16,21 +16,19 @@
     mkcert
     nano
     nixfmt-rfc-style
-    oh-my-zsh
     php83
+    starship
     zsh
     zsh-autosuggestions
     zsh-completions
-    zsh-powerlevel10k
     zsh-syntax-highlighting
   ];
 
   # Font Packages
   fonts.packages = with pkgs; [
-    fira-code
-    jetbrains-mono
-    open-sans
-    roboto
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   # Networking
