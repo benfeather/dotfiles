@@ -5,9 +5,21 @@
   ...
 }:
 {
-  home.homeDirectory = homeDirectory;
-  home.stateVersion = "25.05";
-  home.username = host.user;
+  home = {
+    homeDirectory = homeDirectory;
+
+    shellAliases = {
+      la = "ls -la";
+      ll = "ls -l";
+      mac-update = "brew update && brew upgrade && brew cleanup";
+      mac-rebuild = "sudo darwin-rebuild switch --flake ~/Dotfiles/nix";
+      nix-rebuild = "sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix";
+    };
+
+    stateVersion = "25.05";
+
+    username = host.user;
+  };
 
   # Programs: Git
   programs.git = {
@@ -22,7 +34,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
     };
   };
 
