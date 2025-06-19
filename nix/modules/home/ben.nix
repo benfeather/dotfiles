@@ -45,5 +45,8 @@
     initContent = ''
       eval "$(starship init zsh)"
     '';
+    envExtra = ''
+      SHELL_SESSIONS_DISABLE=1
+    '';
   };
 }
