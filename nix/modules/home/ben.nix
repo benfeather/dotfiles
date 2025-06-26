@@ -9,12 +9,14 @@
     homeDirectory = homeDirectory;
 
     shellAliases = {
+      cls = "clear";
       dev-chrome = "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors --user-data-dir=/tmp/chrome_dev";
       la = "ls -la";
       ll = "ls -l";
-      mac-update = "brew update && brew upgrade && brew cleanup";
       mac-rebuild = "sudo darwin-rebuild switch --flake ~/Dotfiles/nix";
-      nix-rebuild = "sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix";
+      mac-update = "brew update && brew upgrade && brew cleanup";
+      nix-rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles/nix";
+      nix-update = "sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix";
     };
 
     stateVersion = "25.05";
