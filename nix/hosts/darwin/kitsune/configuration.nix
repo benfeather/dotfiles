@@ -5,7 +5,15 @@
 }:
 {
   # Homebrew
-  homebrew.brews = [ ];
+  homebrew.brews = [
+    "bun"
+    "ddev"
+    "docker"
+    "docker-compose"
+    "mkcert"
+    "node@22"
+    "php@8.3"
+  ];
 
   homebrew.casks = [
     "adguard"
@@ -39,7 +47,10 @@
     xcode = 497799835;
   };
 
-  homebrew.taps = [ ];
+  homebrew.taps = [
+    "ddev/ddev"
+    "oven-sh/bun"
+  ];
 
   # System Dock Configuration
   system.defaults.dock.persistent-apps = [

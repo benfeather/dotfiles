@@ -7,16 +7,10 @@
 {
   # Environment Packages
   environment.systemPackages = with pkgs; [
-    bun
-    ddev
-    docker
-    docker-compose
     git
     home-manager
-    mkcert
     nano
     nixfmt-rfc-style
-    php83
     starship
     zsh
     zsh-autosuggestions
