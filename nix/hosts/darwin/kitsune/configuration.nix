@@ -22,6 +22,7 @@
     "obsidian"
     "onlyoffice"
     "orbstack"
+    "plex"
     "proton-drive"
     "setapp"
     "sequel-ace"

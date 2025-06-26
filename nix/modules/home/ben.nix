@@ -9,6 +9,7 @@
     homeDirectory = homeDirectory;
 
     shellAliases = {
+      dev-chrome = "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ignore-certificate-errors --user-data-dir=/tmp/chrome_dev";
       la = "ls -la";
       ll = "ls -l";
       mac-update = "brew update && brew upgrade && brew cleanup";
