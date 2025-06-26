@@ -13,10 +13,8 @@
       dev-chrome = "if [[ \"$(uname -s)\" == \"Darwin\" ]]; then open -a \"Google Chrome\" --args --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; elif command -v google-chrome &> /dev/null; then google-chrome --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; elif command -v google-chrome-stable &> /dev/null; then google-chrome-stable --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; else echo \"Google Chrome not found on this system.\"; fi";
       la = "ls -la";
       ll = "ls -l";
-      mac-rebuild = "sudo darwin-rebuild switch --flake ~/Dotfiles/nix";
-      mac-update = "brew update && brew upgrade && brew cleanup";
-      nix-rebuild = "sudo nixos-rebuild switch --flake ~/Dotfiles/nix";
-      nix-update = "sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix";
+      nix-rebuild = "if [[ \"$(uname -s)\" == \"Darwin\" ]]; then sudo darwin-rebuild switch --flake ~/Dotfiles/nix; else sudo nixos-rebuild switch --flake ~/Dotfiles/nix; fi";
+      nix-upgrade = "if [[ \"$(uname -s)\" == \"Darwin\" ]]; then brew update && brew upgrade && brew cleanup; else sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix; fi";
     };
 
     stateVersion = "25.05";
