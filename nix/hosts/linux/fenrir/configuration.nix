@@ -43,7 +43,7 @@
     fsType = "ntfs-3g";
     options = [
       "exec"
-      "gid=1000"
+      "gid=100"
       "rw"
       "uid=1000"
       "umask=000"
