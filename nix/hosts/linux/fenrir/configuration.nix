@@ -11,8 +11,13 @@
   # Boot Loader (don't touch this future Ben!)
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 5;
+
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 5;
+    };
+
+    timeout = 10;
   };
 
   # Environment Packages
@@ -28,14 +33,22 @@
     mangohud
     openrgb-with-all-plugins
     piper
+    via
     vscode
   ];
 
   # File Systems
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/3BC9CB1B59C8B846";
-    fsType = "ntfs";
-    options = [ "x-gvfs-show" ];
+    fsType = "ntfs-3g";
+    options = [
+      "exec"
+      "gid=1000"
+      "rw"
+      "uid=1000"
+      "umask=000"
+      "user"
+    ];
   };
 
   # Hardware
@@ -58,21 +71,21 @@
 
   # Programs: Steam
   programs.steam = {
-    dedicatedServer.openFirewall = true;
     enable = true;
+    dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
-    extraPackages = with pkgs; [
-      gamescope
-    ];
   };
 
   # Security
   security.rtkit.enable = true;
 
   # Services: Display Manager and Desktop Manager
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.displayManager = {
+    gdm.enable = true;
+    gnome.enable = true;
+  };
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
@@ -86,6 +99,6 @@
     pulse.enable = true;
   };
 
-  # Services: Ratbag Daemon
+  # Services: Ratbag Daemon (Mouse Configuration)
   services.ratbagd.enable = true;
 }
