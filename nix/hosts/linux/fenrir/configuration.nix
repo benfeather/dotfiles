@@ -81,14 +81,12 @@
   security.rtkit.enable = true;
 
   # Services: Display Manager and Desktop Manager
-  services.displayManager = {
-    gdm.enable = true;
-    gnome.enable = true;
-  };
 
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
   # Services: PipeWire
