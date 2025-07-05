@@ -26,7 +26,7 @@
     "github"
     "godot"
     "google-chrome"
-    "jellyfin"
+    "jellyfin-media-player"
     "jordanbaird-ice"
     "obsidian"
     "onlyoffice"
