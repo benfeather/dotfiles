@@ -1,5 +1,4 @@
 {
-  homeDirectory,
   host,
   pkgs,
   ...
@@ -32,16 +31,9 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
 
-  # Programs: Fish
-  programs.fish = {
-    enable = true;
-  };
-
-  # Programs: ZSH
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
+  # Enable Shells
+  programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   # Time
   time.timeZone = "Pacific/Auckland";
