@@ -38,6 +38,12 @@
           arch = "aarch64";
           os = "darwin";
         }
+        {
+          name = "qinglong";
+          user = "ben";
+          arch = "aarch64";
+          os = "linux";
+        }
       ];
 
       mkHost =
