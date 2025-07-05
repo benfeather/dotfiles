@@ -26,6 +26,7 @@
     "github"
     "godot"
     "google-chrome"
+    "iina"
     "jellyfin-media-player"
     "jordanbaird-ice"
     "obsidian"
