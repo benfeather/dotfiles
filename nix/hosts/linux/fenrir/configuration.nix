@@ -1,5 +1,7 @@
 {
   config,
+  homeDirectory,
+  host,
   pkgs,
   ...
 }:
@@ -100,4 +102,23 @@
 
   # Services: Ratbag Daemon (Mouse Configuration)
   services.ratbagd.enable = true;
+
+  # Users
+  users.users.${host.user} = {
+    name = host.user;
+    shell = pkgs.fish;
+    isNormalUser = true;
+
+    # Home Directory
+    createHome = true;
+    home = homeDirectory;
+    homeMode = "700";
+
+    # User Groups
+    group = "users";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+  };
 }

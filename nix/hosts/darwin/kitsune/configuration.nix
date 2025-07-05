@@ -1,4 +1,5 @@
 {
+  homeDirectory,
   host,
   pkgs,
   ...
@@ -84,4 +85,15 @@
     { app = "/Applications/Affinity\ Designer\ 2.app"; }
     { app = "/Applications/CrossOver.app"; }
   ];
+
+  # Users
+  users.users.${host.user} = {
+    name = host.user;
+    shell = pkgs.fish;
+
+    # Home Directory
+    createHome = true;
+    home = homeDirectory;
+    homeMode = "700";
+  };
 }

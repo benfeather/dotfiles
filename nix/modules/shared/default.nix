@@ -12,10 +12,6 @@
     nano
     nixfmt-rfc-style
     starship
-    zsh
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
   ];
 
   # Font Packages
@@ -37,7 +33,9 @@
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
 
   # Programs: Fish
-  programs.fish.enable = false;
+  programs.fish = {
+    enable = true;
+  };
 
   # Programs: ZSH
   programs.zsh = {
@@ -47,11 +45,4 @@
 
   # Time
   time.timeZone = "Pacific/Auckland";
-
-  # Users
-  users.users.${host.user} = {
-    home = homeDirectory;
-    name = host.user;
-    shell = pkgs.zsh;
-  };
 }

@@ -47,14 +47,4 @@
 
   # System: State Version
   system.stateVersion = "25.05";
-
-  # Users
-  users.users.${host.user} = {
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-
-    isNormalUser = true;
-  };
 }
