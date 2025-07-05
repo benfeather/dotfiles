@@ -5,6 +5,13 @@
   ...
 }:
 {
+  imports = [
+    ./conf/fish.nix
+    ./conf/git.nix
+    ./conf/starship.nix
+    ./conf/zsh.nix
+  ];
+
   home = {
     homeDirectory = homeDirectory;
 
@@ -20,38 +27,5 @@
     stateVersion = "25.05";
 
     username = host.user;
-  };
-
-  # Programs: Git
-  programs.git = {
-    enable = true;
-    extraConfig.init.defaultBranch = "master";
-    userEmail = "contact@benfeather.dev";
-    userName = "Ben Feather";
-  };
-
-  # Programs: Starship Terminal Prompt
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      add_newline = true;
-    };
-  };
-
-  # Programs: ZSH
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    initContent = ''
-      eval "$(starship init zsh)"
-
-      if [[ "$(uname -s)" == "Darwin" ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      fi
-    '';
-    envExtra = ''
-      SHELL_SESSIONS_DISABLE=1
-    '';
   };
 }

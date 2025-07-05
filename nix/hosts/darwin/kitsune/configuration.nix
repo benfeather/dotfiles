@@ -90,10 +90,6 @@
   users.users.${host.user} = {
     name = host.user;
     shell = pkgs.fish;
-
-    # Home Directory
-    createHome = true;
     home = homeDirectory;
-    homeMode = "700";
   };
 }
