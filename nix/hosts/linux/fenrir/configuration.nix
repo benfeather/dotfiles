@@ -55,7 +55,7 @@
     ];
   };
 
-  # Hardware
+  # Hardware: NVIDIA
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
@@ -64,6 +64,12 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
+  };
+
+  # Hardware: Graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
   };
 
   # Programs
