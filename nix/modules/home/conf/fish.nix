@@ -5,12 +5,16 @@
 {
   programs.fish = {
     enable = true;
-    initExtra = ''
-      eval "$(starship init fish)"
 
-      if [[ "$(uname -s)" == "Darwin" ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      fi
+    interactiveShellInit = ''
+      set fish_greeting 
+      starship init fish | source
     '';
+
+    shellAliases = {
+      cls = "clear";
+      la = "ls -la";
+      ll = "ls -l";
+    };
   };
 }
