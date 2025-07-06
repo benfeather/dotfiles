@@ -12,15 +12,18 @@
     ./services/default.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    git
-    nodejs
-  ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      80
+      443
+      3000
+    ];
+  };
 
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-
     autoPrune = {
       enable = true;
       dates = "weekly";
