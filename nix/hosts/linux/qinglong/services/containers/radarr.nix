@@ -3,9 +3,9 @@
     image = "lscr.io/linuxserver/radarr:latest";
     hostname = "radarr";
     autoStart = true;
-    networks = [
-      "proxy"
-    ];
+    # networks = [
+    #   "proxy"
+    # ];
     ports = [
       "7878:7878"
     ];

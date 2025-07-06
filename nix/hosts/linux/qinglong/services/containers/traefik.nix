@@ -3,9 +3,9 @@
     image = "traefik:v3";
     hostname = "traefik";
     autoStart = true;
-    networks = [
-      "proxy"
-    ];
+    # networks = [
+    #   "proxy"
+    # ];
     ports = [
       "80:80"
       "443:443"
@@ -44,9 +44,9 @@
     image = "traefik/whoami";
     hostname = "traefik-whoami";
     autoStart = true;
-    networks = [
-      "proxy"
-    ];
+    # networks = [
+    #   "proxy"
+    # ];
     labels = {
       "traefik.enable" = "true";
       "traefik.http.routers.whoami.rule" = "Host(`whoami.qinglong.orb.local`)";

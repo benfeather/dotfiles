@@ -3,9 +3,9 @@
     image = "lscr.io/linuxserver/sonarr:latest";
     hostname = "sonarr";
     autoStart = true;
-    networks = [
-      "proxy"
-    ];
+    # networks = [
+    #   "proxy"
+    # ];
     ports = [
       "8989:8989"
     ];
