@@ -1,9 +1,18 @@
 {
 	"cSpell.words": [
+		"accesslog",
+		"exposedbydefault",
 		"nixos",
 		"nixpkgs",
 		"pipewire",
 		"pkgs",
-		"pulseaudio"
+		"pulseaudio",
+		"qinglong",
+		"radarr",
+		"redirections",
+		"sonarr",
+		"traefik",
+		"virtualisation",
+		"websecure"
 	]
 }

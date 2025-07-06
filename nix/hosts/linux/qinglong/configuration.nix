@@ -13,7 +13,7 @@
   ];
 
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowedTCPPorts = [
       80
       443
@@ -28,5 +28,9 @@
       enable = true;
       dates = "weekly";
     };
+  };
+
+  virtualisation.oci-containers = {
+    backend = "docker";
   };
 }
