@@ -5,8 +5,8 @@
     autoStart = true;
 
     environment = {
-      "PUID" = "1000";
-      "PGID" = "1000";
+      "PUID" = "501";
+      "PGID" = "100";
       "TZ" = "Pacific/Auckland";
     };
 

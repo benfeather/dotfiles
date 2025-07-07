@@ -4,13 +4,13 @@
     hostname = "plex";
     autoStart = true;
 
-    devices = [
-      "/dev/dri:/dev/dri"
-    ];
+    # devices = [
+    #   "/dev/dri:/dev/dri"
+    # ];
 
     environment = {
-      "PUID" = "1000";
-      "PGID" = "1000";
+      "PUID" = "501";
+      "PGID" = "100";
       "TZ" = "Pacific/Auckland";
       "PLEX_CLAIM" = "claim-xxxxxx";
     };
