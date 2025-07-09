@@ -29,7 +29,9 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/fileflows/config:/app"
+      "/mnt/mac/Users/ben/VM-Data/fileflows/data:/app/Data"
+      "/mnt/mac/Users/ben/VM-Data/fileflows/logs:/app/Logs"
+      "/mnt/mac/Users/ben/VM-Data/fileflows/temp:/temp"
       "/mnt/mac/Users/ben/VM-Data/media:/data"
     ];
   };
