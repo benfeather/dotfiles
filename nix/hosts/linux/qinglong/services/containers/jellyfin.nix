@@ -17,7 +17,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.jellyfin.rule" = "Host(`jellyfin.qinglong.orb.local`)";
       "traefik.http.routers.jellyfin.entrypoints" = "websecure";
-      "traefik.http.services.jellyfin.loadbalancer.server.port" = "8005";
+      "traefik.http.services.jellyfin.loadbalancer.server.port" = "8096";
     };
 
     networks = [

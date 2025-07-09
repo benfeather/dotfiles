@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.qinglong.orb.local`)";
       "traefik.http.routers.bazarr-anime.entrypoints" = "websecure";
-      "traefik.http.services.bazarr-anime.loadbalancer.server.port" = "8001";
+      "traefik.http.services.bazarr-anime.loadbalancer.server.port" = "6767";
     };
 
     ports = [

@@ -18,7 +18,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.plex.rule" = "Host(`plex.qinglong.orb.local`)";
       "traefik.http.routers.plex.entrypoints" = "websecure";
-      "traefik.http.services.plex.loadbalancer.server.port" = "8008";
+      "traefik.http.services.plex.loadbalancer.server.port" = "32400";
     };
 
     networks = [

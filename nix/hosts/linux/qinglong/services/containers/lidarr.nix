@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.lidarr.rule" = "Host(`lidarr.qinglong.orb.local`)";
       "traefik.http.routers.lidarr.entrypoints" = "websecure";
-      "traefik.http.services.lidarr.loadbalancer.server.port" = "8006";
+      "traefik.http.services.lidarr.loadbalancer.server.port" = "7878";
     };
 
     networks = [

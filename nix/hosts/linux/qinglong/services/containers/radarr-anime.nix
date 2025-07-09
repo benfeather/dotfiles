@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.radarr-anime.rule" = "Host(`radarr-anime.qinglong.orb.local`)";
       "traefik.http.routers.radarr-anime.entrypoints" = "websecure";
-      "traefik.http.services.radarr-anime.loadbalancer.server.port" = "8010";
+      "traefik.http.services.radarr-anime.loadbalancer.server.port" = "7878";
     };
 
     networks = [
