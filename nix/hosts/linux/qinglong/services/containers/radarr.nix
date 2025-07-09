@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."radarr" = {
     image = "lscr.io/linuxserver/radarr:latest";
     hostname = "radarr";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -17,6 +16,10 @@
       "traefik.http.services.radarr.loadbalancer.server.port" = "7878";
     };
 
+    networks = [
+      "proxy"
+    ];
+
     ports = [
       "7878:7878"
     ];
@@ -30,7 +33,6 @@
   virtualisation.oci-containers.containers."radarr-anime" = {
     image = "lscr.io/linuxserver/radarr:latest";
     hostname = "radarr-anime";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -44,6 +46,10 @@
       "traefik.http.routers.radarr-anime.entrypoints" = "websecure";
       "traefik.http.services.radarr-anime.loadbalancer.server.port" = "7879";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "7879:7878"

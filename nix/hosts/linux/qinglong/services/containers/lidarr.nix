@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."lidarr" = {
     image = "lscr.io/linuxserver/lidarr:latest";
     hostname = "lidarr";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -16,6 +15,10 @@
       "traefik.http.routers.lidarr.entrypoints" = "websecure";
       "traefik.http.services.lidarr.loadbalancer.server.port" = "7878";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "7878:7878"

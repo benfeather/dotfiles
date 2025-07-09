@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."uptime" = {
     image = "louislam/uptime-kuma:alpine";
     hostname = "uptime";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -16,6 +15,10 @@
       "traefik.http.routers.uptime.entrypoints" = "websecure";
       "traefik.http.services.uptime.loadbalancer.server.port" = "3001";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "3001:3001"

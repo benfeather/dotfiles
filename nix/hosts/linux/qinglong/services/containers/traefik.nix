@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."traefik" = {
     image = "traefik:v3";
     hostname = "traefik";
-    autoStart = true;
 
     cmd = [
       "--entrypoints.web.address=:80"
@@ -30,6 +29,10 @@
       "traefik.http.routers.dashboard.tls" = "true";
     };
 
+    networks = [
+      "proxy"
+    ];
+
     ports = [
       "80:80"
       "443:443"
@@ -44,7 +47,6 @@
   virtualisation.oci-containers.containers."traefik-whoami" = {
     image = "traefik/whoami";
     hostname = "traefik-whoami";
-    autoStart = true;
 
     labels = {
       "traefik.enable" = "true";

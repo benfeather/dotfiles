@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."fileflows" = {
     image = "revenz/fileflows";
     hostname = "fileflows";
-    autoStart = true;
 
     # devices = [
     #   "/dev/dri:/dev/dri"
@@ -20,6 +19,10 @@
       "traefik.http.routers.fileflows.entrypoints" = "websecure";
       "traefik.http.services.fileflows.loadbalancer.server.port" = "5000";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "5000:5000"

@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."overseerr" = {
     image = "lscr.io/linuxserver/overseerr:latest";
     hostname = "overseerr";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -16,6 +15,10 @@
       "traefik.http.routers.overseerr.entrypoints" = "websecure";
       "traefik.http.services.overseerr.loadbalancer.server.port" = "5055";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "5055:5055"

@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."prowlarr" = {
     image = "lscr.io/linuxserver/prowlarr:latest";
     hostname = "prowlarr";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -16,6 +15,10 @@
       "traefik.http.routers.prowlarr.entrypoints" = "websecure";
       "traefik.http.services.prowlarr.loadbalancer.server.port" = "9696";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "9696:9696"

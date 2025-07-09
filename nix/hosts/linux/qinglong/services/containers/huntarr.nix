@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."huntarr" = {
     image = "huntarr/huntarr:latest";
     hostname = "huntarr";
-    autoStart = true;
 
     environment = {
       "TZ" = "Pacific/Auckland";
@@ -14,6 +13,10 @@
       "traefik.http.routers.huntarr.entrypoints" = "websecure";
       "traefik.http.services.huntarr.loadbalancer.server.port" = "9705";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "9705:9705"

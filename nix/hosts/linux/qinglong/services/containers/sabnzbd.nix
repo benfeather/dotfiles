@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
     hostname = "sabnzbd";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -16,6 +15,10 @@
       "traefik.http.routers.sabnzbd.entrypoints" = "websecure";
       "traefik.http.services.sabnzbd.loadbalancer.server.port" = "8080";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "8080:8080"

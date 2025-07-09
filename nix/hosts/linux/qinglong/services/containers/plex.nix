@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."plex" = {
     image = "lscr.io/linuxserver/plex:latest";
     hostname = "plex";
-    autoStart = true;
 
     # devices = [
     #   "/dev/dri:/dev/dri"
@@ -21,6 +20,10 @@
       "traefik.http.routers.plex.entrypoints" = "websecure";
       "traefik.http.services.plex.loadbalancer.server.port" = "32400";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "32400:32400"

@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."bazarr" = {
     image = "lscr.io/linuxserver/bazarr:latest";
     hostname = "bazarr";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";
@@ -17,6 +16,10 @@
       "traefik.http.services.bazarr.loadbalancer.server.port" = "6767";
     };
 
+    networks = [
+      "proxy"
+    ];
+
     ports = [
       "6767:6767"
     ];
@@ -30,7 +33,6 @@
   virtualisation.oci-containers.containers."bazarr-anime" = {
     image = "lscr.io/linuxserver/bazarr:latest";
     hostname = "bazarr-anime";
-    autoStart = true;
 
     environment = {
       "PUID" = "501";

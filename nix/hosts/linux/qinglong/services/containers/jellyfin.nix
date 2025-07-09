@@ -2,7 +2,6 @@
   virtualisation.oci-containers.containers."jellyfin" = {
     image = "lscr.io/linuxserver/jellyfin:latest";
     hostname = "jellyfin";
-    autoStart = true;
 
     # devices = [
     #   "/dev/dri:/dev/dri"
@@ -20,6 +19,10 @@
       "traefik.http.routers.jellyfin.entrypoints" = "websecure";
       "traefik.http.services.jellyfin.loadbalancer.server.port" = "8096";
     };
+
+    networks = [
+      "proxy"
+    ];
 
     ports = [
       "8096:8096" # HTTP access
