@@ -25,6 +25,7 @@
     serviceConfig.Type = "oneshot";
 
     wantedBy = [
+      "docker-bazarr-anime.service"
       "docker-bazarr.service"
       "docker-huntarr.service"
       "docker-jellyfin.service"
@@ -33,6 +34,7 @@
       "docker-plex.service"
       "docker-prowlarr.service"
       "docker-radarr-anime.service"
+      "docker-radarr.service"
       "docker-sabnzbd.service"
       "docker-sonarr-anime.service"
       "docker-sonarr.service"
