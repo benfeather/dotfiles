@@ -25,7 +25,19 @@
     serviceConfig.Type = "oneshot";
 
     wantedBy = [
-      "docker-my-container.service"
+      "docker-bazarr.service"
+      "docker-huntarr.service"
+      "docker-jellyfin.service"
+      "docker-lidarr.service"
+      "docker-overseerr.service"
+      "docker-plex.service"
+      "docker-prowlarr.service"
+      "docker-radarr-anime.service"
+      "docker-sabnzbd.service"
+      "docker-sonarr-anime.service"
+      "docker-sonarr.service"
+      "docker-traefik.service"
+      "docker-uptime.service"
     ];
 
     script = ''

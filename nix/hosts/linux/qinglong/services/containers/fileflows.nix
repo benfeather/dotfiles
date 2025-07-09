@@ -17,7 +17,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.fileflows.rule" = "Host(`fileflows.qinglong.orb.local`)";
       "traefik.http.routers.fileflows.entrypoints" = "websecure";
-      "traefik.http.services.fileflows.loadbalancer.server.port" = "5000";
+      "traefik.http.services.fileflows.loadbalancer.server.port" = "19200";
     };
 
     networks = [
@@ -25,7 +25,7 @@
     ];
 
     ports = [
-      "5000:5000"
+      "19200:19200"
     ];
 
     volumes = [
