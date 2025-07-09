@@ -17,7 +17,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.jellyfin.rule" = "Host(`jellyfin.qinglong.orb.local`)";
       "traefik.http.routers.jellyfin.entrypoints" = "websecure";
-      "traefik.http.services.jellyfin.loadbalancer.server.port" = "8096";
+      "traefik.http.services.jellyfin.loadbalancer.server.port" = "8005";
     };
 
     networks = [
@@ -25,7 +25,7 @@
     ];
 
     ports = [
-      "8096:8096" # HTTP access
+      "8005:8096" # HTTP access
       "7359:7359/udp" # Local network discovery
       "1900:1900/udp" # DNLA discovery
     ];

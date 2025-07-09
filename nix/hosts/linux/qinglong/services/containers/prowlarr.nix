@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.prowlarr.rule" = "Host(`prowlarr.qinglong.orb.local`)";
       "traefik.http.routers.prowlarr.entrypoints" = "websecure";
-      "traefik.http.services.prowlarr.loadbalancer.server.port" = "9696";
+      "traefik.http.services.prowlarr.loadbalancer.server.port" = "8009";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "9696:9696"
+      "8009:9696"
     ];
 
     volumes = [

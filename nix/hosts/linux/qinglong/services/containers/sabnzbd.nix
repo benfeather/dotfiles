@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.sabnzbd.rule" = "Host(`sabnzbd.qinglong.orb.local`)";
       "traefik.http.routers.sabnzbd.entrypoints" = "websecure";
-      "traefik.http.services.sabnzbd.loadbalancer.server.port" = "8080";
+      "traefik.http.services.sabnzbd.loadbalancer.server.port" = "8012";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "8080:8080"
+      "8012:8080"
     ];
 
     volumes = [

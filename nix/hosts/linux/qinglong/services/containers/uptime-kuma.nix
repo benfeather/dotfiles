@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.uptime.rule" = "Host(`uptime.qinglong.orb.local`)";
       "traefik.http.routers.uptime.entrypoints" = "websecure";
-      "traefik.http.services.uptime.loadbalancer.server.port" = "3001";
+      "traefik.http.services.uptime.loadbalancer.server.port" = "8015";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "3001:3001"
+      "8015:3001"
     ];
 
     volumes = [

@@ -11,9 +11,9 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.sonarranime.rule" = "Host(`sonarranime.qinglong.orb.local`)";
-      "traefik.http.routers.sonarranime.entrypoints" = "websecure";
-      "traefik.http.services.sonarranime.loadbalancer.server.port" = "8990";
+      "traefik.http.routers.sonarr-anime.rule" = "Host(`sonarr-anime.qinglong.orb.local`)";
+      "traefik.http.routers.sonarr-anime.entrypoints" = "websecure";
+      "traefik.http.services.sonarr-anime.loadbalancer.server.port" = "8013";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "8990:8989"
+      "8013:8989"
     ];
 
     volumes = [

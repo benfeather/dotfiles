@@ -11,13 +11,13 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.bazarranime.rule" = "Host(`bazarranime.qinglong.orb.local`)";
-      "traefik.http.routers.bazarranime.entrypoints" = "websecure";
-      "traefik.http.services.bazarranime.loadbalancer.server.port" = "6768";
+      "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.qinglong.orb.local`)";
+      "traefik.http.routers.bazarr-anime.entrypoints" = "websecure";
+      "traefik.http.services.bazarr-anime.loadbalancer.server.port" = "8001";
     };
 
     ports = [
-      "6768:6767"
+      "8001:6767"
     ];
 
     volumes = [

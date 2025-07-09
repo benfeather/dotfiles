@@ -14,16 +14,8 @@
       "TS_USERSPACE" = "false";
     };
 
-    labels = {
-      "traefik.enable" = "true";
-      "traefik.http.routers.tailscale.rule" = "Host(`tailscale.qinglong.orb.local`)";
-      "traefik.http.routers.tailscale.entrypoints" = "websecure";
-      "traefik.http.services.tailscale.loadbalancer.server.port" = "7878";
-    };
-
     networks = [
       "host"
-      "proxy"
     ];
 
     volumes = [

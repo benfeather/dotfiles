@@ -18,7 +18,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.plex.rule" = "Host(`plex.qinglong.orb.local`)";
       "traefik.http.routers.plex.entrypoints" = "websecure";
-      "traefik.http.services.plex.loadbalancer.server.port" = "32400";
+      "traefik.http.services.plex.loadbalancer.server.port" = "8008";
     };
 
     networks = [
@@ -26,7 +26,7 @@
     ];
 
     ports = [
-      "32400:32400"
+      "8008:32400"
       "1900:1900"
       "5353:5353/udp"
       "8324:8324"

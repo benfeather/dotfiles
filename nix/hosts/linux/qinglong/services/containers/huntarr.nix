@@ -11,7 +11,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.huntarr.rule" = "Host(`huntarr.qinglong.orb.local`)";
       "traefik.http.routers.huntarr.entrypoints" = "websecure";
-      "traefik.http.services.huntarr.loadbalancer.server.port" = "9705";
+      "traefik.http.services.huntarr.loadbalancer.server.port" = "8004";
     };
 
     networks = [
@@ -19,7 +19,7 @@
     ];
 
     ports = [
-      "9705:9705"
+      "8004:9705"
     ];
 
     volumes = [

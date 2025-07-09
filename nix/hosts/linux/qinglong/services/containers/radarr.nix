@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.radarr.rule" = "Host(`radarr.qinglong.orb.local`)";
       "traefik.http.routers.radarr.entrypoints" = "websecure";
-      "traefik.http.services.radarr.loadbalancer.server.port" = "7878";
+      "traefik.http.services.radarr.loadbalancer.server.port" = "8011";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "7878:7878"
+      "8011:7878"
     ];
 
     volumes = [

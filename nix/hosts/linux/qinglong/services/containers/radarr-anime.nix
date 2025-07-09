@@ -11,9 +11,9 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.radarranime.rule" = "Host(`radarranime.qinglong.orb.local`)";
-      "traefik.http.routers.radarranime.entrypoints" = "websecure";
-      "traefik.http.services.radarranime.loadbalancer.server.port" = "7879";
+      "traefik.http.routers.radarr-anime.rule" = "Host(`radarr-anime.qinglong.orb.local`)";
+      "traefik.http.routers.radarr-anime.entrypoints" = "websecure";
+      "traefik.http.services.radarr-anime.loadbalancer.server.port" = "8010";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "7879:7878"
+      "8010:7878"
     ];
 
     volumes = [

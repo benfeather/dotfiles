@@ -13,7 +13,7 @@
       "traefik.enable" = "true";
       "traefik.http.routers.bazarr.rule" = "Host(`bazarr.qinglong.orb.local`)";
       "traefik.http.routers.bazarr.entrypoints" = "websecure";
-      "traefik.http.services.bazarr.loadbalancer.server.port" = "6767";
+      "traefik.http.services.bazarr.loadbalancer.server.port" = "8002";
     };
 
     networks = [
@@ -21,7 +21,7 @@
     ];
 
     ports = [
-      "6767:6767"
+      "8002:6767"
     ];
 
     volumes = [
