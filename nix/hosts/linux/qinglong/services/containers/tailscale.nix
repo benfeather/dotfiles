@@ -5,11 +5,11 @@
 
     capabilities = {
       "NET_ADMIN" = true;
+      "SYS_MODULE" = true;
     };
 
     environment = {
-      "TS_AUTHKEY" = "";
-      "TS_EXTRA_ARGS" = "--advertise-tags=tag:container";
+      "TS_AUTHKEY" = "tskey-auth-kpsDrYe3J711CNTRL-hRvbzQ7PLvTEPQe8pvjiuTtynYg87X8AQ";
       "TS_STATE_DIR" = "/config";
       "TS_USERSPACE" = "false";
     };

@@ -39,7 +39,6 @@
     "sequel-ace"
     "spotify"
     "visual-studio-code"
-    "zen"
   ];
 
   homebrew.masApps = {
@@ -58,7 +57,6 @@
   # System Dock Configuration
   system.defaults.dock.persistent-apps = [
     { app = "/Applications/Arc.app"; }
-    { app = "/Applications/Zen.app"; }
     { app = "/Applications/Brave\ Browser.app"; }
     {
       spacer = {
