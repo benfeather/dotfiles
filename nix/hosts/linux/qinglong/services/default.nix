@@ -1,5 +1,6 @@
 {
   imports = [
+    ./containers/authentik.nix
     ./containers/bazarr-anime.nix
     ./containers/bazarr.nix
     ./containers/fileflows.nix
