@@ -3,6 +3,10 @@
   ...
 }:
 {
+  environment.variables = {
+    "HOMEBREW_NO_ENV_HINTS" = "TRUE";
+  };
+
   # Homebrew
   homebrew = {
     enable = true;
