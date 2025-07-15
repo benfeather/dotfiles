@@ -77,10 +77,10 @@
     }
     { app = "/Applications/Spotify.app"; }
     { app = "/Applications/WhatsApp.app"; }
-    { app = "/Applications/ONLYOFFICE.app"; }
     { app = "/Applications/Obsidian.app"; }
     { app = "/Applications/Affinity\ Photo\ 2.app"; }
     { app = "/Applications/Affinity\ Designer\ 2.app"; }
+    { app = "/Applications/Plex.app"; }
     { app = "/Applications/CrossOver.app"; }
   ];
 
