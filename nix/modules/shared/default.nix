@@ -1,5 +1,7 @@
 {
+  homeDirectory,
   host,
+  inputs,
   pkgs,
   ...
 }:
@@ -28,7 +30,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.${host.user} = import ./modules/home/${host.user}.nix;
+    users.${host.user} = import ../home/${host.user}.nix;
 
     extraSpecialArgs = {
       inherit homeDirectory;
