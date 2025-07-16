@@ -69,10 +69,10 @@
           value = builder {
             system = "${host.arch}-${host.os}";
             modules = [
+              homeManager
               ./modules/shared/default.nix
               ./modules/shared/${host.os}.nix
               ./hosts/${host.os}/${host.name}/configuration.nix
-              homeManager
             ];
             specialArgs = {
               inherit homeDirectory;
