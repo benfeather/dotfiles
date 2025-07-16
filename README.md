@@ -1,14 +1,33 @@
 # Ben's Dotfiles
 
-1. Clone this repo: `git clone https://github.com/benfeather/dotfiles.git ~/Dotfiles`
+## Install
 
-2. (Mac Only) Install Xcode: `xcode-select --install`
+### 1. Clone this repo: 
 
-3. Install Nix
+`git clone https://github.com/benfeather/dotfiles.git ~/Dotfiles`
+
+### 2. Install Xcode (Mac Only): 
+
+`xcode-select --install`
+
+### 3. Download Nix:
+
 Docs: https://nixos.org/download/
-Linux: `$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon`
-Mac: `$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)`
 
-4. Initial Setup
-Mac: `nix run nix-darwin --extra-experimental-features "flakes nix-command" -- switch --flake ~/Dotfiles/nix`
-Linux: ``
+**Linux:** 
+
+`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon`
+
+**Mac:** 
+
+`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)`
+
+### 4. Initial Setup:
+
+**Mac:**
+
+`sudo nix run nix-darwin --extra-experimental-features "flakes nix-command" -- switch --flake ~/Dotfiles/nix`
+
+**Linux:**
+
+`WIP`
