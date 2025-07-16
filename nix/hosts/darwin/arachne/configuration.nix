@@ -30,7 +30,12 @@
     "visual-studio-code"
   ];
 
-  homebrew.masApps = { };
+  homebrew.masApps = {
+    affinity-designer = 1616831348;
+    affinity-photo = 1616822987;
+    unarchiver = 425424353;
+    xcode = 497799835;
+  };
 
   homebrew.taps = [
     "ddev/ddev"
