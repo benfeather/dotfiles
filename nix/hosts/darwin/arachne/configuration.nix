@@ -19,22 +19,18 @@
   homebrew.casks = [
     "brave-browser"
     "cyberduck"
+    "docker-desktop"
     "ghostty"
     "github"
     "google-chrome"
     "iina"
     "jordanbaird-ice"
-    "orbstack"
     "setapp"
     "sequel-ace"
-    "spotify"
     "visual-studio-code"
   ];
 
-  homebrew.masApps = {
-    unarchiver = 425424353;
-    xcode = 497799835;
-  };
+  homebrew.masApps = { };
 
   homebrew.taps = [
     "ddev/ddev"
@@ -44,9 +40,9 @@
   # System Dock Configuration
   system.defaults.dock.persistent-apps = [
     { app = "/Applications/Brave\ Browser.app"; }
-    { app = "~/Applications/Brave\ Browser\ Apps/Gmail.app"; }
-    { app = "~/Applications/Brave\ Browser\ Apps/Google Calendar.app"; }
-    { app = "~/Applications/Brave\ Browser\ Apps/Google Chat.app"; }
+    { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Gmail.app"; }
+    { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Google\ Calendar.app"; }
+    { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Google\ Chat.app"; }
     {
       spacer = {
         small = true;

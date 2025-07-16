@@ -73,20 +73,6 @@
               ./modules/shared/${host.os}.nix
               ./hosts/${host.os}/${host.name}/configuration.nix
               homeManager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-
-                  users.${host.user} = import ./modules/home/${host.user}.nix;
-
-                  extraSpecialArgs = {
-                    inherit homeDirectory;
-                    inherit host;
-                    inherit inputs;
-                  };
-                };
-              }
             ];
             specialArgs = {
               inherit homeDirectory;

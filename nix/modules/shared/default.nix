@@ -23,6 +23,20 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  # Home manager
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    users.${host.user} = import ./modules/home/${host.user}.nix;
+
+    extraSpecialArgs = {
+      inherit homeDirectory;
+      inherit host;
+      inherit inputs;
+    };
+  };
+
   # Networking
   networking.hostName = host.name;
 
