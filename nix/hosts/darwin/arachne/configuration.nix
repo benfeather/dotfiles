@@ -7,12 +7,15 @@
 {
   # Homebrew
   homebrew.brews = [
+    "biome"
     "bun"
+    "composer"
     "ddev"
     "docker"
     "docker-compose"
     "mkcert"
     "node@22"
+    "oxlint"
     "php@8.3"
   ];
 
