@@ -23,7 +23,6 @@
     "brave-browser"
     "cyberduck"
     "docker-desktop"
-    "ghostty"
     "github"
     "google-chrome"
     "iina"
@@ -31,6 +30,7 @@
     "setapp"
     "sequel-ace"
     "visual-studio-code"
+    "warp"
   ];
 
   homebrew.masApps = {
@@ -56,7 +56,7 @@
         small = true;
       };
     }
-    { app = "/Applications/Ghostty.app"; }
+    { app = "/Applications/Warp.app"; }
     { app = "/Applications/Visual\ Studio\ Code.app"; }
     { app = "/Applications/Cyberduck.app"; }
     { app = "/Applications/Sequel\ Ace.app"; }
