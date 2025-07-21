@@ -29,6 +29,7 @@
     "jordanbaird-ice"
     "setapp"
     "sequel-ace"
+    "spotify"
     "visual-studio-code"
     "warp"
   ];
@@ -62,6 +63,13 @@
     { app = "/Applications/Sequel\ Ace.app"; }
     { app = "/Applications/Docker.app"; }
     { app = "/Applications/GitHub\ Desktop.app"; }
+    {
+      spacer = {
+        small = true;
+      };
+    }
+    { app = "/Applications/Affinity\ Photo\ 2.app"; }
+    { app = "/Applications/Affinity\ Designer\ 2.app"; }
   ];
 
   # Users
