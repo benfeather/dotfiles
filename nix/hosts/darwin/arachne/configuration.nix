@@ -51,6 +51,7 @@
     { app = "/Applications/Brave\ Browser.app"; }
     { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Gmail.app"; }
     { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Google\ Calendar.app"; }
+    { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Google\ Keep.app"; }
     { app = "/Users/benfeather/Applications/Brave\ Browser\ Apps.localized/Google\ Chat.app"; }
     {
       spacer = {
