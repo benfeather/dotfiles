@@ -17,6 +17,7 @@
     "node@22"
     "oxlint"
     "php@8.3"
+    "python@3"
   ];
 
   homebrew.casks = [
@@ -90,7 +91,6 @@
   # Users
   users.users.${host.user} = {
     name = host.user;
-    shell = pkgs.fish;
     home = homeDirectory;
   };
 }
