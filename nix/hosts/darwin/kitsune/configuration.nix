@@ -14,7 +14,7 @@
     "docker"
     "docker-compose"
     "mkcert"
-    "node@22"
+    "node@24"
     "oxlint"
     "php@8.3"
     "python@3"
