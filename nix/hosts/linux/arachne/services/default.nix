@@ -1,8 +1,10 @@
 {
   imports = [
+    # Services
     ./containers/authentik.nix
     ./containers/bazarr-anime.nix
     ./containers/bazarr.nix
+    ./containers/duplicati.nix
     ./containers/fileflows.nix
     ./containers/homepage.nix
     ./containers/huntarr.nix
@@ -20,7 +22,8 @@
     ./containers/tailscale.nix
     ./containers/traefik.nix
     ./containers/uptime-kuma.nix
-    ./containers/watchtower.nix
+
+    # Utilities
     ./utils/network-init.nix
   ];
 }
