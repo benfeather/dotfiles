@@ -38,6 +38,7 @@
     "orbstack"
     "plex"
     "proton-drive"
+    "protonvpn"
     "setapp"
     "sequel-ace"
     "spotify"
