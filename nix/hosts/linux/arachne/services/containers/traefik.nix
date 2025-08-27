@@ -1,4 +1,8 @@
 {
+  config,
+  ...
+}:
+{
   virtualisation.oci-containers.containers."traefik" = {
     image = "traefik:v3";
     hostname = "traefik";
@@ -23,7 +27,7 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.dashboard.rule" = "Host(`dashboard.qinglong.orb.local`)";
+      "traefik.http.routers.dashboard.rule" = "Host(`dashboard.${config.sops.secrets."domain"}`)";
       "traefik.http.routers.dashboard.entrypoints" = "websecure";
       "traefik.http.routers.dashboard.service" = "api@internal";
       "traefik.http.routers.dashboard.tls" = "true";
@@ -50,7 +54,7 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.whoami.rule" = "Host(`whoami.qinglong.orb.local`)";
+      "traefik.http.routers.whoami.rule" = "Host(`whoami.${config.sops.secrets."domain"}`)";
       "traefik.http.routers.whoami.entrypoints" = "websecure";
       "traefik.http.routers.whoami.tls" = "true";
     };

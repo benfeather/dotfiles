@@ -1,0 +1,16 @@
+keys:
+  - &ben age1sreh9k6kxnmduywrvlenykt3gh2wg9pl328f0fs55h6xjz229uhsaxc4h2
+
+creation_rules:
+  - path_regex: hosts/linux/arachne/secrets.yaml$
+    key_groups:
+      - age:
+          - *ben
+  - path_regex: hosts/linux/fenrir/secrets.yaml$
+    key_groups:
+      - age:
+          - *ben
+  - path_regex: hosts/darwin/kitsune/secrets.yaml$
+    key_groups:
+      - age:
+          - *ben

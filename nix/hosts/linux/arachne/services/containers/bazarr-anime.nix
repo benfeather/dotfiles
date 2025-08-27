@@ -1,4 +1,8 @@
 {
+  config,
+  ...
+}:
+{
   virtualisation.oci-containers.containers."bazarr-anime" = {
     image = "lscr.io/linuxserver/bazarr:latest";
     hostname = "bazarr-anime";
@@ -11,7 +15,7 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.qinglong.orb.local`)";
+      "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.${config.sops.secrets."domain"}`)";
       "traefik.http.routers.bazarr-anime.entrypoints" = "websecure";
       "traefik.http.services.bazarr-anime.loadbalancer.server.port" = "6767";
     };
