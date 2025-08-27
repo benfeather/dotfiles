@@ -22,9 +22,9 @@ in
     system = "${host.arch}-${host.os}";
     modules = [
       homeManager
-      (self + "/modules/shared/default.nix")
-      (self + "/modules/shared/${host.os}.nix")
-      (self + "/hosts/${host.os}/${host.name}/configuration.nix")
+      "${self}/modules/shared/default.nix"
+      "${self}/modules/shared/${host.os}.nix"
+      "${self}/hosts/${host.os}/${host.name}/configuration.nix"
     ];
     specialArgs = {
       inherit homeDirectory host inputs;
