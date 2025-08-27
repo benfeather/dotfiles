@@ -18,6 +18,7 @@
     "oxlint"
     "php@8.3"
     "python@3"
+    "sops"
   ];
 
   homebrew.casks = [

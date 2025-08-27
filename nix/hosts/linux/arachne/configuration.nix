@@ -20,6 +20,12 @@
     ];
   };
 
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
+  };
+
   users.users.${host.user} = {
     name = host.user;
     shell = pkgs.fish;
