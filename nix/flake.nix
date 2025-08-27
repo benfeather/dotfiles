@@ -12,19 +12,16 @@
     };
     homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    sops.url = "github:Mic92/sops-nix";
   };
 
   outputs =
     inputs@{
-      darwin,
-      home,
       nixpkgs,
       self,
       ...
     }:
     let
-      lib = nixpkgs.lib;
-
       hosts = [
         # Personal Server
         {
@@ -50,16 +47,17 @@
       ];
 
       mkHost = import ./modules/lib/mkHost.nix {
-        inherit darwin;
-        inherit home;
         inherit inputs;
-        inherit nixpkgs;
         inherit self;
       };
     in
     {
-      darwinConfigurations = lib.listToAttrs (lib.map mkHost (lib.filter (h: h.os == "darwin") hosts));
+      darwinConfigurations = nixpkgs.lib.listToAttrs (
+        nixpkgs.lib.map mkHost (nixpkgs.lib.filter (h: h.os == "darwin") hosts)
+      );
 
-      nixosConfigurations = lib.listToAttrs (lib.map mkHost (lib.filter (h: h.os == "linux") hosts));
+      nixosConfigurations = nixpkgs.lib.listToAttrs (
+        nixpkgs.lib.map mkHost (nixpkgs.lib.filter (h: h.os == "linux") hosts)
+      );
     };
 }
