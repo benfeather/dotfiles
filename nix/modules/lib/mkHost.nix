@@ -2,12 +2,13 @@
 {
   darwin,
   home,
-  nixpkgs,
   inputs,
+  nixpkgs,
   self,
 }:
 
-mkHost:
+host:
+
 let
   builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
 

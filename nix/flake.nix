@@ -52,8 +52,8 @@
       mkHost = import ./modules/lib/mkHost.nix {
         inherit darwin;
         inherit home;
-        inherit nixpkgs;
         inherit inputs;
+        inherit nixpkgs;
         inherit self;
       };
     in
