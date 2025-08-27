@@ -14,20 +14,20 @@
 
 Docs: https://nixos.org/download/
 
-**Linux:** 
-
-`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon`
-
 **Mac:** 
 
 `$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)`
+
+**Linux:** 
+
+`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon`
 
 ### 4. Initial Setup:
 
 **Mac:**
 
-`sudo nix run nix-darwin --extra-experimental-features "flakes nix-command" -- switch --flake ~/Dotfiles/nix`
+`sudo nix run nix-darwin --extra-experimental-features "flakes nix-command" -- switch --flake ~/Dotfiles/nix#hostname`
 
 **Linux:**
 
-`WIP`
+`nixos-rebuild switch --flake ~/Dotfiles/nix#hostname`

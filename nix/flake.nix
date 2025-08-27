@@ -26,12 +26,12 @@
       lib = nixpkgs.lib;
 
       hosts = [
-        # Work Laptop
+        # Personal Server
         {
           name = "arachne";
-          user = "benfeather";
+          user = "ben";
           arch = "aarch64";
-          os = "darwin";
+          os = "linux";
         }
         # Personal Desktop
         {
@@ -46,13 +46,6 @@
           user = "ben";
           arch = "aarch64";
           os = "darwin";
-        }
-        # Personal Server
-        {
-          name = "qinglong";
-          user = "ben";
-          arch = "aarch64";
-          os = "linux";
         }
       ];
 
