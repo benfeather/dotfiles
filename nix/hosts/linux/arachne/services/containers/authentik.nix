@@ -3,7 +3,7 @@
     "authentik-server" = {
       image = "ghcr.io/goauthentik/server:latest";
       hostname = "authentik-server";
-      command = "server";
+      cmd = [ "server" ];
 
       environment = {
         "AUTHENTIK_SECRET_KEY" = "secret";
@@ -33,7 +33,7 @@
     "authentik-worker" = {
       image = "ghcr.io/goauthentik/server:latest";
       hostname = "authentik-worker";
-      command = "worker";
+      cmd = [ "worker" ];
 
       environment = {
         "AUTHENTIK_SECRET_KEY" = "changeme";

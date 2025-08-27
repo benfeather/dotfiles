@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   systemd.services.network-init = {
     serviceConfig.Type = "oneshot";
 

@@ -49,31 +49,13 @@
         }
       ];
 
-      mkHost =
-        host:
-        let
-          builder = if host.os == "darwin" then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
-          homeDirectory = if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
-          homeManager =
-            if host.os == "darwin" then home.darwinModules.home-manager else home.nixosModules.home-manager;
-        in
-        {
-          name = host.name;
-          value = builder {
-            system = "${host.arch}-${host.os}";
-            modules = [
-              homeManager
-              ./modules/shared/default.nix
-              ./modules/shared/${host.os}.nix
-              ./hosts/${host.os}/${host.name}/configuration.nix
-            ];
-            specialArgs = {
-              inherit homeDirectory;
-              inherit host;
-              inherit inputs;
-            };
-          };
-        };
+      mkHost = import ./modules/lib/mkHost.nix {
+        inherit darwin;
+        inherit home;
+        inherit nixpkgs;
+        inherit inputs;
+        inherit self;
+      };
     in
     {
       darwinConfigurations = lib.listToAttrs (lib.map mkHost (lib.filter (h: h.os == "darwin") hosts));

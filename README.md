@@ -30,4 +30,4 @@ Docs: https://nixos.org/download/
 
 **Linux:**
 
-`nixos-rebuild switch --flake ~/Dotfiles/nix#hostname`
+`sudo nixos-rebuild switch --flake ~/Dotfiles/nix#hostname`
