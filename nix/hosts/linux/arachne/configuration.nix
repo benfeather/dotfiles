@@ -2,14 +2,12 @@
   config,
   homeDirectory,
   host,
-  modulesPath,
   pkgs,
   ...
 }:
 {
   imports = [
-    "${modulesPath}/virtualisation/lxc-container.nix"
-    /etc/nixos/orbstack.nix
+    ./hardware-configuration.nix
     ./services/default.nix
   ];
 

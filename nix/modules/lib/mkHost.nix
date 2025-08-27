@@ -1,4 +1,3 @@
-# modules/lib/mkHost.nix
 {
   darwin,
   home,
