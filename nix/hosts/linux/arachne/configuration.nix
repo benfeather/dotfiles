@@ -52,11 +52,15 @@
     secrets = {
       "global/pg_user".sopsFile = ./secrets.yaml;
       "global/pg_pass".sopsFile = ./secrets.yaml;
+      "global/plex_claim".sopsFile = ./secrets.yaml;
+      "global/tailscale_key".sopsFile = ./secrets.yaml;
     };
 
     placeholder = {
       "global/pg_user" = config.sops.secrets."global/pg_user".path;
       "global/pg_pass" = config.sops.secrets."global/pg_pass".path;
+      "global/plex_claim" = config.sops.secrets."global/plex_claim".path;
+      "global/tailscale_key" = config.sops.secrets."global/tailscale_key".path;
     };
   };
 
@@ -74,6 +78,7 @@
     group = "users";
     extraGroups = [
       "docker"
+      "networkmanager"
       "wheel"
     ];
   };

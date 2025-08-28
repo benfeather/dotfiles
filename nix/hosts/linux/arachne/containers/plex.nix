@@ -15,7 +15,7 @@ in
     # ];
 
     environment = {
-      "PLEX_CLAIM" = "claim-xxxxxx";
+      "PLEX_CLAIM" = config.sops.placeholder."global/plex_claim";
       "PUID" = env.puid;
       "PGID" = env.pgid;
       "TZ" = env.tz;

@@ -18,7 +18,7 @@ in
     environment = {
       "PUID" = env.puid;
       "PGID" = env.pgid;
-      "TS_AUTHKEY" = "tskey-auth-kpsDrYe3J711CNTRL-hRvbzQ7PLvTEPQe8pvjiuTtynYg87X8AQ";
+      "TS_AUTHKEY" = config.sops.placeholder."global/tailscale_key";
       "TS_STATE_DIR" = "/config";
       "TS_USERSPACE" = "false";
       "TZ" = env.tz;
