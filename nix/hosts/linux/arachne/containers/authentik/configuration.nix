@@ -4,15 +4,15 @@
 }:
 {
   sops.secrets."authentik/db_name" = {
-    sopsFile = ./secrets.yml;
+    sopsFile = ./secrets.yaml;
   };
 
   sops.secrets."authentik/db_user" = {
-    sopsFile = ./secrets.yml;
+    sopsFile = ./secrets.yaml;
   };
 
   sops.secrets."authentik/db_pass" = {
-    sopsFile = ./secrets.yml;
+    sopsFile = ./secrets.yaml;
   };
 
   virtualisation.oci-containers.containers = {
@@ -41,8 +41,8 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
-        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
+        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
+        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
       ];
     };
 
@@ -66,9 +66,9 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
-        "${config.sops.secrets."global/data_dir"}/authentik/certs:/certs"
-        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
+        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
+        "/mnt/mac/Users/ben/VM-Data/authentik/certs:/certs"
+        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
         "/var/run/docker.sock:/var/run/docker.sock"
       ];
     };
@@ -89,7 +89,7 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global/data_dir"}/authentik/postgres:/var/lib/postgresql/data"
+        "/mnt/mac/Users/ben/VM-Data/authentik/postgres:/var/lib/postgresql/data"
       ];
     };
 
@@ -106,7 +106,7 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global/data_dir"}/authentik/redis:/data"
+        "/mnt/mac/Users/ben/VM-Data/authentik/redis:/data"
       ];
     };
   };
