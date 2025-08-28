@@ -21,6 +21,7 @@
     ./containers/lidarr.nix
     ./containers/overseerr.nix
     ./containers/plex.nix
+    ./containers/postgres.nix
     ./containers/prowlarr.nix
     ./containers/radarr-anime.nix
     ./containers/radarr.nix
@@ -45,23 +46,19 @@
     ];
   };
 
-  # sops = {
-  #   age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
-  #   secrets = {
-  #     "global/data_dir".sopsFile = ./secrets.yaml;
-  #     "global/domain".sopsFile = ./secrets.yaml;
-  #     "global/puid".sopsFile = ./secrets.yaml;
-  #     "global/pgid".sopsFile = ./secrets.yaml;
-  #     "global/tz".sopsFile = ./secrets.yaml;
-  #   };
-  #   placeholder = {
-  #     "global/data_dir" = config.sops.secrets."global/data_dir".path;
-  #     "global/domain" = config.sops.secrets."global/domain".path;
-  #     "global/puid" = config.sops.secrets."global/puid".path;
-  #     "global/pgid" = config.sops.secrets."global/pgid".path;
-  #     "global/tz" = config.sops.secrets."global/tz".path;
-  #   };
-  # };
+  sops = {
+    age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
+
+    secrets = {
+      "global/pg_db_user".sopsFile = ./secrets.yaml;
+      "global/pg_db_pass".sopsFile = ./secrets.yaml;
+    };
+
+    placeholder = {
+      "global/pg_db_user" = config.sops.secrets."global/pg_db_user".path;
+      "global/pg_db_pass" = config.sops.secrets."global/pg_db_pass".path;
+    };
+  };
 
   users.users.${host.user} = {
     name = host.user;

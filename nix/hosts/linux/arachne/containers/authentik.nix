@@ -6,17 +6,6 @@ let
   env = import ../utils/env.nix;
 in
 {
-  sops = {
-    secrets = {
-      "authentik/db_user".sopsFile = ./secrets.yaml;
-      "authentik/db_pass".sopsFile = ./secrets.yaml;
-    };
-    placeholder = {
-      "authentik/db_user" = config.sops.secrets."authentik/db_user".path;
-      "authentik/db_pass" = config.sops.secrets."authentik/db_pass".path;
-    };
-  };
-
   virtualisation.oci-containers.containers = {
     "authentik-server" = {
       image = "ghcr.io/goauthentik/server:latest";
@@ -26,10 +15,10 @@ in
       environment = {
         "AUTHENTIK_SECRET_KEY" = "secret";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
-        "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgresql";
+        "AUTHENTIK_POSTGRESQL__HOST" = "postgresql";
         "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_db_pass";
         "TZ" = env.tz;
       };
 
@@ -56,10 +45,10 @@ in
       environment = {
         "AUTHENTIK_SECRET_KEY" = "changeme";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
-        "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgres";
+        "AUTHENTIK_POSTGRESQL__HOST" = "postgres";
         "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_db_pass";
         "TZ" = env.tz;
       };
 
@@ -72,26 +61,6 @@ in
         "/mnt/mac/Users/ben/VM-Data/authentik/certs:/certs"
         "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
         "/var/run/docker.sock:/var/run/docker.sock"
-      ];
-    };
-
-    "authentik-postgres" = {
-      image = "docker.io/library/postgres:alpine";
-      hostname = "authentik-postgres";
-
-      environment = {
-        "POSTGRES_DB" = "authentik";
-        "POSTGRES_USER" = config.sops.placeholder."authentik/db_user";
-        "POSTGRES_PASSWORD" = config.sops.placeholder."authentik/db_pass";
-        "TZ" = env.tz;
-      };
-
-      networks = [
-        "proxy"
-      ];
-
-      volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/postgres:/var/lib/postgresql/data"
       ];
     };
 

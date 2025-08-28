@@ -2,6 +2,9 @@
   config,
   ...
 }:
+let
+  env = import ../utils/env.nix;
+in
 {
   virtualisation.oci-containers.containers."traefik" = {
     image = "traefik:v3";
@@ -27,9 +30,7 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.dashboard.rule" = "Host(`dashboard.${
-        config.sops.placeholder."global/domain"
-      }`)";
+      "traefik.http.routers.dashboard.rule" = "Host(`dashboard.${env.domain}`)";
       "traefik.http.routers.dashboard.entrypoints" = "websecure";
       "traefik.http.routers.dashboard.service" = "api@internal";
       "traefik.http.routers.dashboard.tls" = "true";
@@ -56,7 +57,7 @@
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.whoami.rule" = "Host(`whoami.${config.sops.placeholder."global/domain"}`)";
+      "traefik.http.routers.whoami.rule" = "Host(`whoami.${env.domain}`)";
       "traefik.http.routers.whoami.entrypoints" = "websecure";
       "traefik.http.routers.whoami.tls" = "true";
     };

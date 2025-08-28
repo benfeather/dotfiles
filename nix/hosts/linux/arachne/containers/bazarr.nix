@@ -2,6 +2,9 @@
   config,
   ...
 }:
+let
+  env = import ../utils/env.nix;
+in
 {
   virtualisation.oci-containers.containers."bazarr" = {
     image = "lscr.io/linuxserver/bazarr:latest";
@@ -10,12 +13,12 @@
     environment = {
       "PUID" = config.sops.placeholder."global/puid";
       "PGID" = config.sops.placeholder."global/pgid";
-      "TZ" = config.sops.placeholder."global/tz";
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.bazarr.rule" = "Host(`bazarr.${config.sops.placeholder."global/domain"}`)";
+      "traefik.http.routers.bazarr.rule" = "Host(`bazarr.${env.domain}`)";
       "traefik.http.routers.bazarr.entrypoints" = "websecure";
       "traefik.http.services.bazarr.loadbalancer.server.port" = "6767";
     };
