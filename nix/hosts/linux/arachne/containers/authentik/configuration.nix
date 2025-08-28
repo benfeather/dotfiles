@@ -3,17 +3,15 @@
   ...
 }:
 {
-  sops.secrets."authentik/db_name" = {
-    sopsFile = ./secrets.yaml;
+  sops.secrets = {
+    "authentik/db_name".sopsFile = ./secrets.yaml;
+    "authentik/db_user".sopsFile = ./secrets.yaml;
+    "authentik/db_pass".sopsFile = ./secrets.yaml;
   };
 
-  sops.secrets."authentik/db_user" = {
-    sopsFile = ./secrets.yaml;
-  };
-
-  sops.secrets."authentik/db_pass" = {
-    sopsFile = ./secrets.yaml;
-  };
+  sops.placeholder."authentik/db_name" = config.sops.secrets."authentik/db_name".path;
+  sops.placeholder."authentik/db_user" = config.sops.secrets."authentik/db_user".path;
+  sops.placeholder."authentik/db_pass" = config.sops.secrets."authentik/db_pass".path;
 
   virtualisation.oci-containers.containers = {
     "authentik-server" = {
@@ -25,10 +23,10 @@
         "AUTHENTIK_SECRET_KEY" = "secret";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgresql";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik/db_name";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik/db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.secrets."authentik/db_pass";
-        "TZ" = config.sops.secrets."global/tz";
+        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.placeholder."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
+        "TZ" = config.sops.placeholder."global/tz";
       };
 
       networks = [
@@ -55,10 +53,10 @@
         "AUTHENTIK_SECRET_KEY" = "changeme";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgres";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik/db_name";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik/db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.secrets."authentik/db_pass";
-        "TZ" = config.sops.secrets."global/tz";
+        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.placeholder."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
+        "TZ" = config.sops.placeholder."global/tz";
       };
 
       networks = [
@@ -78,10 +76,10 @@
       hostname = "authentik-postgres";
 
       environment = {
-        "POSTGRES_DB" = config.sops.secrets."authentik/db_name";
-        "POSTGRES_USER" = config.sops.secrets."authentik/db_user";
-        "POSTGRES_PASSWORD" = config.sops.secrets."authentik/db_pass";
-        "TZ" = config.sops.secrets."global/tz";
+        "POSTGRES_DB" = config.sops.placeholder."authentik/db_name";
+        "POSTGRES_USER" = config.sops.placeholder."authentik/db_user";
+        "POSTGRES_PASSWORD" = config.sops.placeholder."authentik/db_pass";
+        "TZ" = config.sops.placeholder."global/tz";
       };
 
       networks = [
@@ -98,7 +96,7 @@
       hostname = "authentik-redis";
 
       environment = {
-        "TZ" = config.sops.secrets."global/tz";
+        "TZ" = config.sops.placeholder."global/tz";
       };
 
       networks = [

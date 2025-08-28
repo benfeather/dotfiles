@@ -8,14 +8,14 @@
     hostname = "bazarr";
 
     environment = {
-      "PUID" = config.sops.secrets."global/puid";
-      "PGID" = config.sops.secrets."global/pgid";
-      "TZ" = config.sops.secrets."global/tz";
+      "PUID" = config.sops.placeholder."global/puid";
+      "PGID" = config.sops.placeholder."global/pgid";
+      "TZ" = config.sops.placeholder."global/tz";
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.bazarr.rule" = "Host(`bazarr.${config.sops.secrets."global/domain"}`)";
+      "traefik.http.routers.bazarr.rule" = "Host(`bazarr.${config.sops.placeholder."global/domain"}`)";
       "traefik.http.routers.bazarr.entrypoints" = "websecure";
       "traefik.http.services.bazarr.loadbalancer.server.port" = "6767";
     };

@@ -47,14 +47,19 @@
 
   sops = {
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets.yaml;
-    defaultSopsFormat = "yaml";
     secrets = {
-      "global/data_dir" = { };
-      "global/domain" = { };
-      "global/puid" = { };
-      "global/pgid" = { };
-      "global/tz" = { };
+      "global/data_dir".sopsFile = ./secrets.yaml;
+      "global/domain".sopsFile = ./secrets.yaml;
+      "global/puid".sopsFile = ./secrets.yaml;
+      "global/pgid".sopsFile = ./secrets.yaml;
+      "global/tz".sopsFile = ./secrets.yaml;
+    };
+    placeholder = {
+      "global/data_dir" = config.sops.secrets."global/data_dir".path;
+      "global/domain" = config.sops.secrets."global/domain".path;
+      "global/puid" = config.sops.secrets."global/puid".path;
+      "global/pgid" = config.sops.secrets."global/pgid".path;
+      "global/tz" = config.sops.secrets."global/tz".path;
     };
   };
 
