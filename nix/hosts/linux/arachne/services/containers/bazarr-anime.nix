@@ -8,14 +8,16 @@
     hostname = "bazarr-anime";
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = "${config.sops.secrets."global/puid"}";
+      "PGID" = "${config.sops.secrets."global/pgid"}";
+      "TZ" = "${config.sops.secrets."global/tz"}";
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.${config.sops.secrets."domain"}`)";
+      "traefik.http.routers.bazarr-anime.rule" = "Host(`bazarr-anime.${
+        config.sops.secrets."global/domain"
+      }`)";
       "traefik.http.routers.bazarr-anime.entrypoints" = "websecure";
       "traefik.http.services.bazarr-anime.loadbalancer.server.port" = "6767";
     };

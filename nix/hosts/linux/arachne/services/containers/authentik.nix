@@ -1,4 +1,8 @@
 {
+  config,
+  ...
+}:
+{
   virtualisation.oci-containers.containers = {
     "authentik-server" = {
       image = "ghcr.io/goauthentik/server:latest";
@@ -9,10 +13,10 @@
         "AUTHENTIK_SECRET_KEY" = "secret";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgresql";
-        "AUTHENTIK_POSTGRESQL__USER" = "authentik";
-        "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = "authentik";
-        "TZ" = "Pacific/Auckland";
+        "AUTHENTIK_POSTGRESQL__NAME" = "${config.sops.secrets."services/authentik/db_name"}";
+        "AUTHENTIK_POSTGRESQL__USER" = "${config.sops.secrets."services/authentik/db_user"}";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = "${config.sops.secrets."services/authentik/db_pass"}";
+        "TZ" = "${config.sops.secrets."global/tz"}";
       };
 
       networks = [
@@ -25,8 +29,8 @@
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
-        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
+        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
+        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
       ];
     };
 
@@ -39,9 +43,10 @@
         "AUTHENTIK_SECRET_KEY" = "changeme";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgres";
-        "AUTHENTIK_POSTGRESQL__USER" = "authentik";
-        "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = "changeme";
+        "AUTHENTIK_POSTGRESQL__NAME" = "${config.sops.secrets."services/authentik/db_name"}";
+        "AUTHENTIK_POSTGRESQL__USER" = "${config.sops.secrets."services/authentik/db_user"}";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = "${config.sops.secrets."services/authentik/db_pass"}";
+        "TZ" = "${config.sops.secrets."global/tz"}";
       };
 
       networks = [
@@ -49,9 +54,9 @@
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
-        "/mnt/mac/Users/ben/VM-Data/authentik/certs:/certs"
-        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
+        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
+        "${config.sops.secrets."global/data_dir"}/authentik/certs:/certs"
+        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
         "/var/run/docker.sock:/var/run/docker.sock"
       ];
     };
@@ -61,10 +66,10 @@
       hostname = "authentik-postgres";
 
       environment = {
-        "POSTGRES_USER" = "authentik";
-        "POSTGRES_PASSWORD" = "changeme";
-        "POSTGRES_DB" = "authentik";
-        "TZ" = "Pacific/Auckland";
+        "POSTGRES_DB" = "${config.sops.secrets."services/authentik/db_name"}";
+        "POSTGRES_USER" = "${config.sops.secrets."services/authentik/db_user"}";
+        "POSTGRES_PASSWORD" = "${config.sops.secrets."services/authentik/db_pass"}";
+        "TZ" = "${config.sops.secrets."global/tz"}";
       };
 
       networks = [
@@ -72,7 +77,7 @@
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/postgres:/var/lib/postgresql/data"
+        "${config.sops.secrets."global/data_dir"}/authentik/postgres:/var/lib/postgresql/data"
       ];
     };
 
@@ -81,7 +86,7 @@
       hostname = "authentik-redis";
 
       environment = {
-        "TZ" = "Pacific/Auckland";
+        "TZ" = "${config.sops.secrets."global/tz"}";
       };
 
       networks = [
@@ -89,7 +94,7 @@
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/redis:/data"
+        "${config.sops.secrets."global/data_dir"}/authentik/redis:/data"
       ];
     };
   };
