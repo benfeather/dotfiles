@@ -8,9 +8,9 @@
     hostname = "bazarr";
 
     environment = {
-      "PUID" = "${config.sops.secrets."global/puid"}";
-      "PGID" = "${config.sops.secrets."global/pgid"}";
-      "TZ" = "${config.sops.secrets."global/tz"}";
+      "PUID" = config.sops.secrets."global/puid";
+      "PGID" = config.sops.secrets."global/pgid";
+      "TZ" = config.sops.secrets."global/tz";
     };
 
     labels = {

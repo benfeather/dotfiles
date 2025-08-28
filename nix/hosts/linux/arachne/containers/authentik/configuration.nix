@@ -3,8 +3,15 @@
   ...
 }:
 {
-  sops.secrets."authentik" = {
-    format = "yaml";
+  sops.secrets."authentik/db_name" = {
+    sopsFile = ./secrets.yml;
+  };
+
+  sops.secrets."authentik/db_user" = {
+    sopsFile = ./secrets.yml;
+  };
+
+  sops.secrets."authentik/db_pass" = {
     sopsFile = ./secrets.yml;
   };
 
@@ -18,10 +25,10 @@
         "AUTHENTIK_SECRET_KEY" = "secret";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgresql";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik".db_name;
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik".db_user;
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = "${config.sops.secrets."authentik".db_pass}";
-        "TZ" = config.sops.secrets."global".tz;
+        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik/db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.secrets."authentik/db_pass";
+        "TZ" = config.sops.secrets."global/tz";
       };
 
       networks = [
@@ -34,8 +41,8 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global".data_dir}/authentik/media:/media"
-        "${config.sops.secrets."global".data_dir}/authentik/custom-templates:/templates"
+        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
+        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
       ];
     };
 
@@ -48,10 +55,10 @@
         "AUTHENTIK_SECRET_KEY" = "changeme";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgres";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik".db_name;
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik".db_user;
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.secrets."authentik".db_pass;
-        "TZ" = config.sops.secrets."global".tz;
+        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.secrets."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.secrets."authentik/db_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.secrets."authentik/db_pass";
+        "TZ" = config.sops.secrets."global/tz";
       };
 
       networks = [
@@ -59,9 +66,9 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global".data_dir}/authentik/media:/media"
-        "${config.sops.secrets."global".data_dir}/authentik/certs:/certs"
-        "${config.sops.secrets."global".data_dir}/authentik/custom-templates:/templates"
+        "${config.sops.secrets."global/data_dir"}/authentik/media:/media"
+        "${config.sops.secrets."global/data_dir"}/authentik/certs:/certs"
+        "${config.sops.secrets."global/data_dir"}/authentik/custom-templates:/templates"
         "/var/run/docker.sock:/var/run/docker.sock"
       ];
     };
@@ -71,10 +78,10 @@
       hostname = "authentik-postgres";
 
       environment = {
-        "POSTGRES_DB" = config.sops.secrets."authentik".db_name;
-        "POSTGRES_USER" = config.sops.secrets."authentik".db_user;
-        "POSTGRES_PASSWORD" = config.sops.secrets."authentik".db_pass;
-        "TZ" = config.sops.secrets."global".tz;
+        "POSTGRES_DB" = config.sops.secrets."authentik/db_name";
+        "POSTGRES_USER" = config.sops.secrets."authentik/db_user";
+        "POSTGRES_PASSWORD" = config.sops.secrets."authentik/db_pass";
+        "TZ" = config.sops.secrets."global/tz";
       };
 
       networks = [
@@ -82,7 +89,7 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global".data_dir}/authentik/postgres:/var/lib/postgresql/data"
+        "${config.sops.secrets."global/data_dir"}/authentik/postgres:/var/lib/postgresql/data"
       ];
     };
 
@@ -91,7 +98,7 @@
       hostname = "authentik-redis";
 
       environment = {
-        "TZ" = config.sops.secrets."global".tz;
+        "TZ" = config.sops.secrets."global/tz";
       };
 
       networks = [
@@ -99,7 +106,7 @@
       ];
 
       volumes = [
-        "${config.sops.secrets."global".data_dir}/authentik/redis:/data"
+        "${config.sops.secrets."global/data_dir"}/authentik/redis:/data"
       ];
     };
   };

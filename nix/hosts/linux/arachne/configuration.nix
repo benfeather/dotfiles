@@ -47,10 +47,14 @@
 
   sops = {
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
-
-    secrets."global" = {
-      format = "yaml";
-      sopsFile = ./secrets.yml;
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
+    secrets = {
+      "global/data_dir" = { };
+      "global/domain" = { };
+      "global/puid" = { };
+      "global/pgid" = { };
+      "global/tz" = { };
     };
   };
 
