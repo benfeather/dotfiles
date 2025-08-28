@@ -2,15 +2,16 @@
   config,
   ...
 }:
+let
+  env = import ../utils/env.nix;
+in
 {
   sops = {
     secrets = {
-      "authentik/db_name".sopsFile = ./secrets.yaml;
       "authentik/db_user".sopsFile = ./secrets.yaml;
       "authentik/db_pass".sopsFile = ./secrets.yaml;
     };
     placeholder = {
-      "authentik/db_name" = config.sops.secrets."authentik/db_name".path;
       "authentik/db_user" = config.sops.secrets."authentik/db_user".path;
       "authentik/db_pass" = config.sops.secrets."authentik/db_pass".path;
     };
@@ -26,10 +27,10 @@
         "AUTHENTIK_SECRET_KEY" = "secret";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgresql";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.placeholder."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
         "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
         "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
-        "TZ" = config.sops.placeholder."global/tz";
+        "TZ" = env.tz;
       };
 
       networks = [
@@ -56,10 +57,10 @@
         "AUTHENTIK_SECRET_KEY" = "changeme";
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "authentik-postgres";
-        "AUTHENTIK_POSTGRESQL__NAME" = config.sops.placeholder."authentik/db_name";
+        "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
         "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."authentik/db_user";
         "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."authentik/db_pass";
-        "TZ" = config.sops.placeholder."global/tz";
+        "TZ" = env.tz;
       };
 
       networks = [
@@ -79,10 +80,10 @@
       hostname = "authentik-postgres";
 
       environment = {
-        "POSTGRES_DB" = config.sops.placeholder."authentik/db_name";
+        "POSTGRES_DB" = "authentik";
         "POSTGRES_USER" = config.sops.placeholder."authentik/db_user";
         "POSTGRES_PASSWORD" = config.sops.placeholder."authentik/db_pass";
-        "TZ" = config.sops.placeholder."global/tz";
+        "TZ" = env.tz;
       };
 
       networks = [
@@ -99,7 +100,7 @@
       hostname = "authentik-redis";
 
       environment = {
-        "TZ" = config.sops.placeholder."global/tz";
+        "TZ" = env.tz;
       };
 
       networks = [

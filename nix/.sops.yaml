@@ -2,7 +2,7 @@ keys:
   - &ben age1sreh9k6kxnmduywrvlenykt3gh2wg9pl328f0fs55h6xjz229uhsaxc4h2
 
 creation_rules:
-  - path_regex: hosts/(.+?)/secrets\.(yaml|json)
+  - path_regex: hosts/(.+?)/secrets\.yaml
     key_groups:
       - age:
           - *ben

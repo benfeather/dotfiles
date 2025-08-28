@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
 
     # Services
-    ./containers/authentik/configuration.nix
+    ./containers/authentik.nix
     ./containers/bazarr-anime.nix
     ./containers/bazarr.nix
     ./containers/duplicati.nix
@@ -45,23 +45,23 @@
     ];
   };
 
-  sops = {
-    age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
-    secrets = {
-      "global/data_dir".sopsFile = ./secrets.yaml;
-      "global/domain".sopsFile = ./secrets.yaml;
-      "global/puid".sopsFile = ./secrets.yaml;
-      "global/pgid".sopsFile = ./secrets.yaml;
-      "global/tz".sopsFile = ./secrets.yaml;
-    };
-    placeholder = {
-      "global/data_dir" = config.sops.secrets."global/data_dir".path;
-      "global/domain" = config.sops.secrets."global/domain".path;
-      "global/puid" = config.sops.secrets."global/puid".path;
-      "global/pgid" = config.sops.secrets."global/pgid".path;
-      "global/tz" = config.sops.secrets."global/tz".path;
-    };
-  };
+  # sops = {
+  #   age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
+  #   secrets = {
+  #     "global/data_dir".sopsFile = ./secrets.yaml;
+  #     "global/domain".sopsFile = ./secrets.yaml;
+  #     "global/puid".sopsFile = ./secrets.yaml;
+  #     "global/pgid".sopsFile = ./secrets.yaml;
+  #     "global/tz".sopsFile = ./secrets.yaml;
+  #   };
+  #   placeholder = {
+  #     "global/data_dir" = config.sops.secrets."global/data_dir".path;
+  #     "global/domain" = config.sops.secrets."global/domain".path;
+  #     "global/puid" = config.sops.secrets."global/puid".path;
+  #     "global/pgid" = config.sops.secrets."global/pgid".path;
+  #     "global/tz" = config.sops.secrets."global/tz".path;
+  #   };
+  # };
 
   users.users.${host.user} = {
     name = host.user;

@@ -29,7 +29,14 @@
           user = "ben";
           arch = "aarch64";
           os = "linux";
+          env = {
+            domain = "nixos.orb.local";
+            pgid = 100;
+            puid = 501;
+            tz = "Pacific/Auckland";
+          };
         }
+
         # Personal Desktop
         {
           name = "fenrir";
@@ -37,6 +44,7 @@
           arch = "x86_64";
           os = "linux";
         }
+
         # Personal Laptop
         {
           name = "kitsune";

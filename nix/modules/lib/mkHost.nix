@@ -11,6 +11,8 @@ let
 
   homeDirectory = if host.os == "darwin" then "/Users/${host.user}" else "/home/${host.user}";
 
+  hostEnv = host.env or { };
+
   homeModule =
     if host.os == "darwin" then
       inputs.home.darwinModules.home-manager
@@ -32,7 +34,10 @@ in
       "${self}/hosts/${host.os}/${host.name}/configuration.nix"
     ];
     specialArgs = {
-      inherit homeDirectory host inputs;
+      inherit homeDirectory;
+      inherit host;
+      inherit hostEnv;
+      inherit inputs;
     };
   };
 }
