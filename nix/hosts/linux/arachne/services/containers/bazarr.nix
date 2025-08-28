@@ -29,8 +29,8 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/bazarr/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${config.sops.secrets."global/data_dir"}/bazarr/config:/config"
+      "${config.sops.secrets."global/data_dir"}/media:/data"
     ];
   };
 }
