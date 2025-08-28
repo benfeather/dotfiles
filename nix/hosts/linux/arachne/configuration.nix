@@ -50,13 +50,13 @@
     age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
 
     secrets = {
-      "global/pg_db_user".sopsFile = ./secrets.yaml;
-      "global/pg_db_pass".sopsFile = ./secrets.yaml;
+      "global/pg_user".sopsFile = ./secrets.yaml;
+      "global/pg_pass".sopsFile = ./secrets.yaml;
     };
 
     placeholder = {
-      "global/pg_db_user" = config.sops.secrets."global/pg_db_user".path;
-      "global/pg_db_pass" = config.sops.secrets."global/pg_db_pass".path;
+      "global/pg_user" = config.sops.secrets."global/pg_user".path;
+      "global/pg_pass" = config.sops.secrets."global/pg_pass".path;
     };
   };
 

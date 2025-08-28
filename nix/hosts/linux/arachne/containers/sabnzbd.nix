@@ -1,17 +1,24 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
     hostname = "sabnzbd";
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.sabnzbd.rule" = "Host(`sabnzbd.qinglong.orb.local`)";
+      "traefik.http.routers.sabnzbd.rule" = "Host(`sabnzbd.${env.domain}`)";
       "traefik.http.routers.sabnzbd.entrypoints" = "websecure";
       "traefik.http.services.sabnzbd.loadbalancer.server.port" = "8080";
     };
@@ -25,8 +32,8 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/sabnzbd/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/sabnzbd/config:/config"
+      "${env.data_dir}:/data"
     ];
   };
 }

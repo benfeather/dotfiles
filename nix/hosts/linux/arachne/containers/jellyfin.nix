@@ -1,4 +1,11 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."jellyfin" = {
     image = "lscr.io/linuxserver/jellyfin:latest";
     hostname = "jellyfin";
@@ -8,14 +15,14 @@
     # ];
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.jellyfin.rule" = "Host(`jellyfin.qinglong.orb.local`)";
+      "traefik.http.routers.jellyfin.rule" = "Host(`jellyfin.${env.domain}`)";
       "traefik.http.routers.jellyfin.entrypoints" = "websecure";
       "traefik.http.services.jellyfin.loadbalancer.server.port" = "8096";
     };
@@ -31,8 +38,8 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/jellyfin/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/jellyfin/config:/config"
+      "${env.data_dir}:/data"
     ];
   };
 }

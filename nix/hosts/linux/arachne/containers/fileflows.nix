@@ -1,4 +1,11 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."fileflows" = {
     image = "revenz/fileflows";
     hostname = "fileflows";
@@ -8,15 +15,15 @@
     # ];
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
       "TempPathHost" = "/temp";
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.fileflows.rule" = "Host(`fileflows.qinglong.orb.local`)";
+      "traefik.http.routers.fileflows.rule" = "Host(`fileflows.${env.domain}`)";
       "traefik.http.routers.fileflows.entrypoints" = "websecure";
       "traefik.http.services.fileflows.loadbalancer.server.port" = "5000";
     };
@@ -30,10 +37,10 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/fileflows/data:/app/Data"
-      "/mnt/mac/Users/ben/VM-Data/fileflows/logs:/app/Logs"
-      "/mnt/mac/Users/ben/VM-Data/fileflows/temp:/temp"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/fileflows/data:/app/Data"
+      "${env.config_dir}/fileflows/logs:/app/Logs"
+      "${env.config_dir}/fileflows/temp:/temp"
+      "${env.data_dir}:/data"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
     ];
   };

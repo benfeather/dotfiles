@@ -1,17 +1,24 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."prowlarr" = {
     image = "lscr.io/linuxserver/prowlarr:latest";
     hostname = "prowlarr";
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.prowlarr.rule" = "Host(`prowlarr.qinglong.orb.local`)";
+      "traefik.http.routers.prowlarr.rule" = "Host(`prowlarr.${env.domain}`)";
       "traefik.http.routers.prowlarr.entrypoints" = "websecure";
       "traefik.http.services.prowlarr.loadbalancer.server.port" = "9696";
     };
@@ -25,7 +32,7 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/prowlarr/config:/config"
+      "${env.config_dir}/prowlarr/config:/config"
     ];
   };
 }

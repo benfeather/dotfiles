@@ -17,8 +17,8 @@ in
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "postgresql";
         "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_db_pass";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_pass";
         "TZ" = env.tz;
       };
 
@@ -32,8 +32,8 @@ in
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
-        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
+        "${env.config_dir}/authentik/media:/media"
+        "${env.config_dir}/authentik/custom-templates:/templates"
       ];
     };
 
@@ -47,8 +47,8 @@ in
         "AUTHENTIK_REDIS__HOST" = "authentik-redis";
         "AUTHENTIK_POSTGRESQL__HOST" = "postgres";
         "AUTHENTIK_POSTGRESQL__NAME" = "authentik";
-        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_db_user";
-        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_db_pass";
+        "AUTHENTIK_POSTGRESQL__USER" = config.sops.placeholder."global/pg_user";
+        "AUTHENTIK_POSTGRESQL__PASSWORD" = config.sops.placeholder."global/pg_pass";
         "TZ" = env.tz;
       };
 
@@ -57,9 +57,9 @@ in
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/media:/media"
-        "/mnt/mac/Users/ben/VM-Data/authentik/certs:/certs"
-        "/mnt/mac/Users/ben/VM-Data/authentik/custom-templates:/templates"
+        "${env.config_dir}/authentik/media:/media"
+        "${env.config_dir}/authentik/certs:/certs"
+        "${env.config_dir}/authentik/custom-templates:/templates"
         "/var/run/docker.sock:/var/run/docker.sock"
       ];
     };
@@ -77,7 +77,7 @@ in
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/authentik/redis:/data"
+        "${env.config_dir}/authentik/redis:/data"
       ];
     };
   };

@@ -12,8 +12,10 @@ in
       hostname = "postgres";
 
       environment = {
-        "POSTGRES_USER" = config.sops.placeholder."global/pg_db_user";
-        "POSTGRES_PASSWORD" = config.sops.placeholder."global/pg_db_pass";
+        "POSTGRES_USER" = config.sops.placeholder."global/pg_user";
+        "POSTGRES_PASSWORD" = config.sops.placeholder."global/pg_pass";
+        "PUID" = env.puid;
+        "PGID" = env.pgid;
         "TZ" = env.tz;
       };
 
@@ -22,7 +24,7 @@ in
       ];
 
       volumes = [
-        "/mnt/mac/Users/ben/VM-Data/postgres:/var/lib/postgresql/data"
+        "${env.config_dir}/postgres:/var/lib/postgresql/data"
       ];
     };
   };

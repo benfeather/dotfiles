@@ -1,10 +1,19 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."recyclarr" = {
     image = "recyclarr/recyclarr:latest";
     hostname = "recyclarr";
 
     environment = {
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     networks = [
@@ -12,7 +21,7 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/recyclarr/config:/config"
+      "${env.config_dir}/recyclarr/config:/config"
     ];
   };
 }

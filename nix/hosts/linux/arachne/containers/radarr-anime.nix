@@ -1,17 +1,24 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."radarr-anime" = {
     image = "lscr.io/linuxserver/radarr:latest";
     hostname = "radarr-anime";
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.radarr-anime.rule" = "Host(`radarr-anime.qinglong.orb.local`)";
+      "traefik.http.routers.radarr-anime.rule" = "Host(`radarr-anime.${env.domain}`)";
       "traefik.http.routers.radarr-anime.entrypoints" = "websecure";
       "traefik.http.services.radarr-anime.loadbalancer.server.port" = "7878";
     };
@@ -25,8 +32,8 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/radarr-anime/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/radarr-anime/config:/config"
+      "${env.data_dir}:/data"
     ];
   };
 }

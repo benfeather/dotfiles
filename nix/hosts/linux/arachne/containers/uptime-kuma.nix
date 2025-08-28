@@ -1,17 +1,24 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."uptime" = {
     image = "louislam/uptime-kuma:alpine";
     hostname = "uptime";
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.uptime.rule" = "Host(`uptime.qinglong.orb.local`)";
+      "traefik.http.routers.uptime.rule" = "Host(`uptime.${env.domain}`)";
       "traefik.http.routers.uptime.entrypoints" = "websecure";
       "traefik.http.services.uptime.loadbalancer.server.port" = "3001";
     };
@@ -25,7 +32,7 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/uptime/config:/app/data"
+      "${env.config_dir}/uptime/config:/app/data"
     ];
   };
 }

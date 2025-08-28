@@ -1,18 +1,25 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."homepage" = {
     image = "ghcr.io/gethomepage/homepage:latest";
     hostname = "homepage";
 
     environment = {
-      "HOMEPAGE_ALLOWED_HOSTS" = "homepage.qinglong.orb.local";
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
+      "HOMEPAGE_ALLOWED_HOSTS" = "homepage.${env.domain}";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.homepage.rule" = "Host(`homepage.qinglong.orb.local`)";
+      "traefik.http.routers.homepage.rule" = "Host(`homepage.${env.domain}`)";
       "traefik.http.routers.homepage.entrypoints" = "websecure";
       "traefik.http.services.homepage.loadbalancer.server.port" = "3000";
     };
@@ -26,7 +33,7 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/homepage/config:/app/config"
+      "${env.config_dir}/homepage/config:/app/config"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
     ];
   };

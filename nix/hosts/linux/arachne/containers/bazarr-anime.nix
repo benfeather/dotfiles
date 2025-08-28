@@ -11,8 +11,8 @@ in
     hostname = "bazarr-anime";
 
     environment = {
-      "PUID" = config.sops.placeholder."global/puid";
-      "PGID" = config.sops.placeholder."global/pgid";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
       "TZ" = env.tz;
     };
 
@@ -28,8 +28,8 @@ in
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/bazarr-anime/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/bazarr-anime/config:/config"
+      "${env.data_dir}:/data"
     ];
   };
 }

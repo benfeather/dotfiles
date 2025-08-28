@@ -1,4 +1,11 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."tailscale" = {
     image = "tailscale/tailscale:latest";
     hostname = "tailscale";
@@ -9,9 +16,12 @@
     };
 
     environment = {
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
       "TS_AUTHKEY" = "tskey-auth-kpsDrYe3J711CNTRL-hRvbzQ7PLvTEPQe8pvjiuTtynYg87X8AQ";
       "TS_STATE_DIR" = "/config";
       "TS_USERSPACE" = "false";
+      "TZ" = env.tz;
     };
 
     networks = [
@@ -19,7 +29,7 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/tailscale/config:/config"
+      "${env.config_dir}/tailscale/config:/config"
     ];
   };
 }

@@ -1,4 +1,11 @@
 {
+  config,
+  ...
+}:
+let
+  env = import ../utils/env.nix;
+in
+{
   virtualisation.oci-containers.containers."plex" = {
     image = "lscr.io/linuxserver/plex:latest";
     hostname = "plex";
@@ -8,15 +15,15 @@
     # ];
 
     environment = {
-      "PUID" = "501";
-      "PGID" = "100";
-      "TZ" = "Pacific/Auckland";
       "PLEX_CLAIM" = "claim-xxxxxx";
+      "PUID" = env.puid;
+      "PGID" = env.pgid;
+      "TZ" = env.tz;
     };
 
     labels = {
       "traefik.enable" = "true";
-      "traefik.http.routers.plex.rule" = "Host(`plex.qinglong.orb.local`)";
+      "traefik.http.routers.plex.rule" = "Host(`plex.${env.domain}`)";
       "traefik.http.routers.plex.entrypoints" = "websecure";
       "traefik.http.services.plex.loadbalancer.server.port" = "32400";
     };
@@ -38,8 +45,8 @@
     ];
 
     volumes = [
-      "/mnt/mac/Users/ben/VM-Data/plex/config:/config"
-      "/mnt/mac/Users/ben/VM-Data/media:/data"
+      "${env.config_dir}/plex/config:/config"
+      "${env.data_dir}:/data"
     ];
   };
 }
