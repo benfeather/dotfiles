@@ -3,15 +3,18 @@
   ...
 }:
 {
-  sops.secrets = {
-    "authentik/db_name".sopsFile = ./secrets.yaml;
-    "authentik/db_user".sopsFile = ./secrets.yaml;
-    "authentik/db_pass".sopsFile = ./secrets.yaml;
+  sops = {
+    secrets = {
+      "authentik/db_name".sopsFile = ./secrets.yaml;
+      "authentik/db_user".sopsFile = ./secrets.yaml;
+      "authentik/db_pass".sopsFile = ./secrets.yaml;
+    };
+    placeholder = {
+      "authentik/db_name" = config.sops.secrets."authentik/db_name".path;
+      "authentik/db_user" = config.sops.secrets."authentik/db_user".path;
+      "authentik/db_pass" = config.sops.secrets."authentik/db_pass".path;
+    };
   };
-
-  sops.placeholder."authentik/db_name" = config.sops.secrets."authentik/db_name".path;
-  sops.placeholder."authentik/db_user" = config.sops.secrets."authentik/db_user".path;
-  sops.placeholder."authentik/db_pass" = config.sops.secrets."authentik/db_pass".path;
 
   virtualisation.oci-containers.containers = {
     "authentik-server" = {
