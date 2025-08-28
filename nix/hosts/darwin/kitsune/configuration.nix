@@ -7,6 +7,7 @@
 {
   # Homebrew
   homebrew.brews = [
+    "age"
     "biome"
     "bun"
     "composer"
