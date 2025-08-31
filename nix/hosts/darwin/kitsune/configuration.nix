@@ -44,6 +44,7 @@
     "spotify"
     "visual-studio-code"
     "warp"
+    "zoom"
   ];
 
   homebrew.masApps = {
