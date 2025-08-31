@@ -34,6 +34,7 @@
     "jellyfin-media-player"
     "jordanbaird-ice"
     "obsidian"
+    "ollama-app"
     "onlyoffice"
     "orbstack"
     "plex"
