@@ -27,6 +27,7 @@
     "brave-browser"
     "crossover"
     "cyberduck"
+    "diffusionbee"
     "github"
     "godot"
     "google-chrome"
@@ -39,6 +40,7 @@
     "orbstack"
     "plex"
     "proton-drive"
+    "proton-mail"
     "protonvpn"
     "setapp"
     "sequel-ace"
@@ -65,6 +67,7 @@
   system.defaults.dock.persistent-apps = [
     { app = "/Applications/Arc.app"; }
     { app = "/Applications/Brave\ Browser.app"; }
+    { app = "/Applications/Proton\ Mail.app"; }
     {
       spacer = {
         small = true;
@@ -75,18 +78,16 @@
     { app = "/Applications/Cyberduck.app"; }
     { app = "/Applications/Sequel\ Ace.app"; }
     { app = "/Applications/OrbStack.app"; }
-    { app = "/Applications/GitHub\ Desktop.app"; }
-    { app = "/Applications/Godot.app"; }
     {
       spacer = {
         small = true;
       };
     }
+    { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
+    { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
     { app = "/Applications/Spotify.app"; }
     { app = "/Applications/WhatsApp.app"; }
     { app = "/Applications/Obsidian.app"; }
-    { app = "/Applications/Affinity\ Photo\ 2.app"; }
-    { app = "/Applications/Affinity\ Designer\ 2.app"; }
     { app = "/Applications/Plex.app"; }
     { app = "/Applications/CrossOver.app"; }
   ];
