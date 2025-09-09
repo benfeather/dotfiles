@@ -45,6 +45,7 @@
     "setapp"
     "sequel-ace"
     "spotify"
+    "tailscale-app"
     "visual-studio-code"
     "warp"
     "zoom"
