@@ -23,13 +23,6 @@
     }:
     let
       hosts = [
-        # Personal Server
-        {
-          name = "arachne";
-          user = "ben";
-          arch = "aarch64";
-          os = "linux";
-        }
         # Personal Desktop
         {
           name = "fenrir";

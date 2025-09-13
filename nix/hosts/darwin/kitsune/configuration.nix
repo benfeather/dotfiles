@@ -27,14 +27,13 @@
     "brave-browser"
     "crossover"
     "cyberduck"
-    "diffusionbee"
     "github"
     "godot"
     "google-chrome"
     "iina"
-    "jellyfin-media-player"
     "jordanbaird-ice"
     "lm-studio"
+    "octarine"
     "obsidian"
     "onlyoffice"
     "orbstack"
@@ -69,6 +68,7 @@
     { app = "/Applications/Arc.app"; }
     { app = "/Applications/Brave\ Browser.app"; }
     { app = "/Applications/Proton\ Mail.app"; }
+    { app = "/Applications/WhatsApp.app"; }
     {
       spacer = {
         small = true;
@@ -87,7 +87,6 @@
     { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
     { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
     { app = "/Applications/Spotify.app"; }
-    { app = "/Applications/WhatsApp.app"; }
     { app = "/Applications/Obsidian.app"; }
     { app = "/Applications/Plex.app"; }
     { app = "/Applications/CrossOver.app"; }
