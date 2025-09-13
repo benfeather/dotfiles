@@ -40,6 +40,7 @@
     "plex"
     "proton-drive"
     "proton-mail"
+    "proton-pass"
     "protonvpn"
     "setapp"
     "sequel-ace"
