@@ -11,8 +11,6 @@
     "bun"
     "composer"
     "ddev"
-    "docker"
-    "docker-compose"
     "mkcert"
     "node@24"
     "oxlint"
@@ -27,6 +25,7 @@
     "brave-browser"
     "crossover"
     "cyberduck"
+    "docker-desktop"
     "github"
     "godot"
     "google-chrome"
@@ -36,7 +35,6 @@
     "octarine"
     "obsidian"
     "onlyoffice"
-    "orbstack"
     "plex"
     "proton-drive"
     "proton-mail"
@@ -79,7 +77,6 @@
     { app = "/Applications/Visual\ Studio\ Code.app"; }
     { app = "/Applications/Cyberduck.app"; }
     { app = "/Applications/Sequel\ Ace.app"; }
-    { app = "/Applications/OrbStack.app"; }
     {
       spacer = {
         small = true;
