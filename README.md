@@ -1,33 +1,31 @@
 # Ben's Dotfiles
 
-## Install
+## Mac
 
-### 1. Clone this repo: 
-
-`git clone https://github.com/benfeather/dotfiles.git ~/Dotfiles`
-
-### 2. Install Xcode (Mac Only): 
+### 1. Install Xcode:
 
 `xcode-select --install`
 
-### 3. Download Nix:
+### 2. Install Brew:
 
-Docs: https://nixos.org/download/
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-**Mac:** 
+### 3. Install Nix:
 
-`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)`
+`sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)`
 
-**Linux:** 
+### 4. Clone this repo:
 
-`$ sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon`
+`git clone https://github.com/benfeather/dotfiles.git ~/Dotfiles`
 
-### 4. Initial Setup:
-
-**Mac:**
+### 5. Initial Build:
 
 `sudo nix run nix-darwin --extra-experimental-features "flakes nix-command" -- switch --flake ~/Dotfiles/nix#hostname`
 
-**Linux:**
+### 6. Subsequent Builds:
 
-`sudo nixos-rebuild switch --flake ~/Dotfiles/nix#hostname`
+`sudo darwin-rebuild switch --flake ~/Dotfiles/nix`
+
+## Linux
+
+WIP
