@@ -16,9 +16,6 @@ let
       inputs.home.darwinModules.home-manager
     else
       inputs.home.nixosModules.home-manager;
-
-  sopsModule =
-    if host.os == "darwin" then inputs.sops.darwinModules.sops else inputs.sops.nixosModules.sops;
 in
 {
   name = host.name;
@@ -26,7 +23,6 @@ in
     system = "${host.arch}-${host.os}";
     modules = [
       homeModule
-      sopsModule
       "${self}/modules/shared/default.nix"
       "${self}/modules/shared/${host.os}.nix"
       "${self}/hosts/${host.os}/${host.name}/configuration.nix"
