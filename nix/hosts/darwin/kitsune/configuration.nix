@@ -62,30 +62,35 @@
   ];
 
   # System Dock Configuration
-  system.defaults.dock.persistent-apps = [
-    { app = "/Applications/Arc.app"; }
-    { app = "/Applications/Brave\ Browser.app"; }
-    {
-      spacer = {
-        small = true;
-      };
-    }
-    { app = "/System/Applications/Utilities/Terminal.app"; }
-    { app = "/Applications/Visual\ Studio\ Code.app"; }
-    { app = "/Applications/Cyberduck.app"; }
-    { app = "/Applications/Sequel\ Ace.app"; }
-    {
-      spacer = {
-        small = true;
-      };
-    }
-    { app = "/Applications/Proton\ Mail.app"; }
-    { app = "/Applications/WhatsApp.app"; }
-    { app = "/Applications/Spotify.app"; }
-    { app = "/Applications/Obsidian.app"; }
-    { app = "/Applications/Plex.app"; }
-    { app = "/Applications/CrossOver.app"; }
-  ];
+  system.defaults.dock = {
+    persistent-apps = [
+      { app = "/Applications/Arc.app"; }
+      { app = "/Applications/Brave\ Browser.app"; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
+      { app = "/System/Applications/Utilities/Terminal.app"; }
+      { app = "/Applications/Visual\ Studio\ Code.app"; }
+      { app = "/Applications/Cyberduck.app"; }
+      { app = "/Applications/Sequel\ Ace.app"; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
+      { app = "/Applications/Proton\ Mail.app"; }
+      { app = "/Applications/Proton\ Pass.app"; }
+      { app = "/Applications/WhatsApp.app"; }
+      { app = "/Applications/Spotify.app"; }
+      { app = "/Applications/Obsidian.app"; }
+      { app = "/Applications/Plex.app"; }
+      { app = "/Applications/CrossOver.app"; }
+    ];
+
+    persistent-others = [ ];
+  };
 
   # Users
   users.users.${host.user} = {

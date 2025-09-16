@@ -23,11 +23,15 @@
   system.defaults.dock = {
     autohide = true;
     autohide-delay = 0.2;
+    largesize = 72;
     launchanim = false;
+    magnification = true;
     mineffect = "scale";
+    minimize-to-application = true;
     mru-spaces = false;
     orientation = "bottom";
     show-recents = false;
+    tilesize = 48;
     wvous-bl-corner = 1;
     wvous-br-corner = 1;
     wvous-tl-corner = 1;
@@ -42,17 +46,23 @@
     AppleShowAllFiles = false;
     FXEnableExtensionChangeWarning = false;
     FXPreferredViewStyle = "clmv";
+    FXRemoveOldTrashItems = true;
     NewWindowTarget = "Home";
+    ShowExternalHardDrivesOnDesktop = false;
+    ShowHardDrivesOnDesktop = false;
+    ShowMountedServersOnDesktop = false;
     ShowPathbar = true;
+    ShowRemovableMediaOnDesktop = false;
     ShowStatusBar = true;
   };
 
   # System Defaults: Other
   system.defaults = {
+    hitoolbox.AppleFnUsageType = "Do Nothing";
     loginwindow.GuestEnabled = false;
     magicmouse.MouseButtonMode = "TwoButton";
-    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     spaces.spans-displays = false;
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     trackpad.Clicking = true;
   };
 
