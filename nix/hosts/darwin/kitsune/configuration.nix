@@ -73,6 +73,7 @@
       }
       { app = "/System/Applications/Utilities/Terminal.app"; }
       { app = "/Applications/Visual\ Studio\ Code.app"; }
+      { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
       { app = "/Applications/Sequel\ Ace.app"; }
       {
