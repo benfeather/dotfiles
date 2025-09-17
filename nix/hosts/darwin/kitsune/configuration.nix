@@ -33,7 +33,6 @@
     "iina"
     "jordanbaird-ice"
     "lm-studio"
-    "octarine"
     "obsidian"
     "onlyoffice"
     "plex"
@@ -43,8 +42,6 @@
     "protonvpn"
     "setapp"
     "sequel-ace"
-    "spotify"
-    "tailscale-app"
     "visual-studio-code"
     "zoom"
   ];
@@ -85,7 +82,6 @@
       { app = "/Applications/Proton\ Mail.app"; }
       { app = "/Applications/Proton\ Pass.app"; }
       { app = "/Applications/WhatsApp.app"; }
-      { app = "/Applications/Spotify.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/Plex.app"; }
       { app = "/Applications/CrossOver.app"; }
