@@ -22,6 +22,7 @@
     "adguard"
     "android-platform-tools"
     "arc"
+    "beeper"
     "brave-browser"
     "crossover"
     "cyberduck"
@@ -32,17 +33,16 @@
     "grammarly-desktop"
     "iina"
     "jordanbaird-ice"
-    "lm-studio"
     "obsidian"
     "onlyoffice"
     "plex"
     "proton-drive"
-    "proton-mail"
     "proton-pass"
     "protonvpn"
     "setapp"
     "sequel-ace"
     "visual-studio-code"
+    "zen"
     "zoom"
   ];
 
@@ -50,7 +50,6 @@
     affinity-designer = 1616831348;
     affinity-photo = 1616822987;
     unarchiver = 425424353;
-    whatsapp = 310633997;
     xcode = 497799835;
   };
 
@@ -79,9 +78,8 @@
           small = true;
         };
       }
-      { app = "/Applications/Proton\ Mail.app"; }
       { app = "/Applications/Proton\ Pass.app"; }
-      { app = "/Applications/WhatsApp.app"; }
+      { app = "/Applications/Beeper.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/Plex.app"; }
       { app = "/Applications/CrossOver.app"; }
