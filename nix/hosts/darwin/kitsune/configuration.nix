@@ -62,6 +62,7 @@
   system.defaults.dock = {
     persistent-apps = [
       { app = "/Applications/Arc.app"; }
+      { app = "/Applications/Zen.app"; }
       { app = "/Applications/Brave\ Browser.app"; }
       {
         spacer = {
@@ -79,7 +80,7 @@
         };
       }
       { app = "/Applications/Proton\ Pass.app"; }
-      { app = "/Applications/Beeper.app"; }
+      { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/Plex.app"; }
       { app = "/Applications/CrossOver.app"; }
