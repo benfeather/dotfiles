@@ -80,9 +80,9 @@
         };
       }
       { app = "/Applications/Proton\ Pass.app"; }
+      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
-      { app = "/Applications/Plex.app"; }
       { app = "/Applications/CrossOver.app"; }
     ];
 
