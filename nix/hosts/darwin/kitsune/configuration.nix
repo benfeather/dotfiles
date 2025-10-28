@@ -32,7 +32,6 @@
     "google-chrome"
     "grammarly-desktop"
     "iina"
-    "jordanbaird-ice"
     "obsidian"
     "onlyoffice"
     "plex"
