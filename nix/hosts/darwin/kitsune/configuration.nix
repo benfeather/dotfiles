@@ -60,7 +60,6 @@
   # System Dock Configuration
   system.defaults.dock = {
     persistent-apps = [
-      { app = "/Applications/Arc.app"; }
       { app = "/Applications/Zen.app"; }
       { app = "/Applications/Brave\ Browser.app"; }
       {
@@ -78,8 +77,10 @@
           small = true;
         };
       }
-      { app = "/Applications/Proton\ Pass.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
+      { app = "/Applications/Proton\ Pass.app"; }
+      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Mail.app"; }
+      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Calendar.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/CrossOver.app"; }
