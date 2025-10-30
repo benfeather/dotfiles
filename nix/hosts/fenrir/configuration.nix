@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
   ];
 
-  # Boot Loader (don't touch this future Ben!)
+  # Boot Loader
   boot.loader = {
     efi.canTouchEfiVariables = true;
 
@@ -24,7 +24,6 @@
 
   # Environment Packages
   environment.systemPackages = with pkgs; [
-    ghostty
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.dash-to-panel
@@ -39,19 +38,6 @@
     piper
     vscode
   ];
-
-  # File Systems
-  fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/3BC9CB1B59C8B846";
-    fsType = "ntfs-3g";
-    options = [
-      "defaults" # Includes the standard default mount options like rw, suid, dev, exec, auto, nouser, async.
-      "uid=1000" # Sets the user ID for all files and directories on the mounted filesystem.
-      "umask=000" # Controls default file and directory permissions by masking out disallowed bits.
-      "remove_hiberfile" # Automatically removes the hibernation file if found, allowing a clean mount.
-      "windows_names" # Prevents the creation of files with names invalid on Windows, improving cross-OS compatibility.
-    ];
-  };
 
   # Hardware: NVIDIA
   hardware.nvidia = {
