@@ -4,15 +4,16 @@
 }:
 {
   home.packages = with pkgs; [
-    starship
+    ghostty
   ];
 
-  programs.starship = {
+  programs.ghostty = {
     enable = true;
+    enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
     settings = {
-      add_newline = true;
+      theme = "catppuccin-mocha";
     };
   };
 }
