@@ -21,16 +21,16 @@
     }:
     let
       hosts = [
-        # Personal Desktop
         {
           name = "fenrir";
+          description = "Ben's PC";
           user = "ben";
           arch = "x86_64";
           os = "linux";
         }
-        # Personal Laptop
         {
           name = "kitsune";
+          description = "Ben's MacBook";
           user = "ben";
           arch = "aarch64";
           os = "darwin";

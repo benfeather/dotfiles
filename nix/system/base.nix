@@ -41,6 +41,7 @@
 
   # Networking
   networking.hostName = host.name;
+  networking.computerName = host.description;
 
   # Nix
   nix.settings.experimental-features = "flakes nix-command";
