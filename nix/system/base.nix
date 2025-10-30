@@ -46,10 +46,6 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
 
-  # Enable Shells
-  programs.fish.enable = true;
-  programs.zsh.enable = true;
-
   # Time
   time.timeZone = "Pacific/Auckland";
 }
