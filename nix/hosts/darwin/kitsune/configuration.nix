@@ -28,6 +28,7 @@
     "cyberduck"
     "docker-desktop"
     "github"
+    "ghostty"
     "godot"
     "google-chrome"
     "grammarly-desktop"
@@ -67,7 +68,7 @@
           small = true;
         };
       }
-      { app = "/System/Applications/Utilities/Terminal.app"; }
+      { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/Visual\ Studio\ Code.app"; }
       { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
@@ -78,7 +79,6 @@
         };
       }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
-      { app = "/Applications/Proton\ Pass.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Mail.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Calendar.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
