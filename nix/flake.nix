@@ -37,7 +37,7 @@
         }
       ];
 
-      mkHost = import ./modules/lib/mkHost.nix {
+      mkHost = import ./lib/mkHost.nix {
         inherit inputs;
         inherit self;
       };

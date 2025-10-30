@@ -30,7 +30,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.${host.user} = import ../home/${host.user}.nix;
+    users.${host.user} = import ../home/${host.user}/default.nix;
 
     extraSpecialArgs = {
       inherit homeDirectory;

@@ -23,9 +23,9 @@ in
     system = "${host.arch}-${host.os}";
     modules = [
       homeModule
-      "${self}/modules/shared/default.nix"
-      "${self}/modules/shared/${host.os}.nix"
-      "${self}/hosts/${host.os}/${host.name}/configuration.nix"
+      "${self}/modules/default.nix"
+      "${self}/modules/${host.os}.nix"
+      "${self}/hosts/${host.name}/configuration.nix"
     ];
     specialArgs = {
       inherit homeDirectory host inputs;

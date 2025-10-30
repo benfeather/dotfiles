@@ -6,10 +6,10 @@
 }:
 {
   imports = [
-    ./conf/fish.nix
-    ./conf/git.nix
-    ./conf/starship.nix
-    ./conf/zsh.nix
+    ./programs/fish.nix
+    ./programs/git.nix
+    ./programs/starship.nix
+    ./programs/zsh.nix
   ];
 
   home = {
