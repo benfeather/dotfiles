@@ -6,11 +6,14 @@
 }:
 {
   imports = [
+    # Programs
     ./programs/fish.nix
     ./programs/git.nix
     ./programs/starship.nix
     ./programs/zsh.nix
-    ./scripts/nix-upgrade.nix
+
+    # Scripts
+    ./scripts/nix-rebuild.nix
   ];
 
   home = {
