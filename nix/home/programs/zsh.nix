@@ -18,10 +18,8 @@
 
     shellAliases = {
       cls = "clear";
-      dev-chrome = "if [[ \"$(uname -s)\" == \"Darwin\" ]]; then open -a \"Google Chrome\" --args --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; elif command -v google-chrome &> /dev/null; then google-chrome --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; elif command -v google-chrome-stable &> /dev/null; then google-chrome-stable --ignore-certificate-errors --user-data-dir /tmp/chrome_dev; else echo \"Google Chrome not found on this system.\"; fi";
       la = "ls -la";
       ll = "ls -l";
-      nix-upgrade = "if [[ \"$(uname -s)\" == \"Darwin\" ]]; then brew update && brew upgrade && brew cleanup; else sudo nixos-rebuild switch --upgrade --flake ~/Dotfiles/nix; fi";
     };
   };
 }

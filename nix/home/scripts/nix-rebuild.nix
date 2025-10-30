@@ -6,29 +6,35 @@ let
   nix-rebuild = pkgs.writeShellScriptBin "nix-rebuild" ''
     FLAKE_PATH="$HOME/Dotfiles/nix"
 
-    # Colors for output
-    BLUE='\033[0;34m'
-    GREEN='\033[0;32m'
-    YELLOW='\033[1;33m'
-    NC='\033[0m' # No Color
+    print_divider() {
+      echo "========================================"
+    }
 
     print_header() {
       echo ""
-      echo -e "$BLUE━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$NC"
-      echo -e "$BLUE  $1$NC"
-      echo -e "$BLUE━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$NC"
-      echo ""
+      print_divider
+      echo "  $1"
+      print_divider
     }
 
     print_step() {
-      echo -e "$GREEN▶$NC $1"
+      echo ""
+      echo ">> $1"
+    }
+
+    print_success() {
+      echo "   Success: $1"
+    }
+
+    print_error() {
+      echo "   Error: $1"
+    }
+
+    print_warning() {
+      echo "   Warning: $1"
     }
 
     print_header "System Upgrade"
-
-    # Update Nix flake inputs
-    print_step "Updating Nix flake inputs..."
-    nix flake update "$FLAKE_PATH"
 
     # Detect the operating system and rebuild
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -37,7 +43,7 @@ let
         print_step "Rebuilding NixOS configuration..."
         sudo nixos-rebuild switch --flake "$FLAKE_PATH" --upgrade
       else
-        echo "Error: Linux detected but not running NixOS"
+        print_error "Linux detected but not running NixOS"
         exit 1
       fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -46,28 +52,39 @@ let
       
       # Check if Homebrew is installed
       if command -v brew &> /dev/null; then
-        echo ""
-
         print_step "Updating Homebrew..."
-        brew update
+        if brew update &> /dev/null; then
+          print_success "Homebrew updated"
+        else
+          print_error "Homebrew update failed"
+          exit 1
+        fi
         
         print_step "Upgrading Homebrew packages..."
-        brew upgrade
+        if brew upgrade &> /dev/null; then
+          print_success "Homebrew packages upgraded"
+        else
+          print_error "Homebrew upgrade failed"
+          exit 1
+        fi
         
         print_step "Cleaning up Homebrew..."
-        brew cleanup
+        if brew cleanup &> /dev/null; then
+          print_success "Homebrew cleanup completed"
+        else
+          print_error "Homebrew cleanup failed"
+          exit 1
+        fi
       else
         echo ""
-        echo -e "$YELLOW⚠ Homebrew not found, skipping...$NC"
+        print_warning "Homebrew not found, skipping..."
       fi
     else
-      echo "Error: Unsupported operating system: $OSTYPE"
+      print_error "Unsupported operating system: $OSTYPE"
       exit 1
     fi
 
-    echo ""
-    echo -e "$GREEN✓ All upgrades completed successfully!$NC"
-    echo ""
+    print_header "Upgrade Complete"
   '';
 in
 {
