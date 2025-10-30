@@ -8,7 +8,7 @@
   imports = [
     # Programs
     ./programs/fish.nix
-    ./programs/ghostty.nix
+    # ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/starship.nix
     ./programs/zsh.nix

@@ -28,6 +28,7 @@
     "cyberduck"
     "docker-desktop"
     "github"
+    "ghostty"
     "godot"
     "google-chrome"
     "grammarly-desktop"

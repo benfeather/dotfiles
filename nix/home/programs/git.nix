@@ -11,12 +11,12 @@
     enable = true;
     extraConfig = {
       init.defaultBranch = "master";
-      ignores = [
-        ".DS_Store"
-      ];
       pull.ff = "only";
       rebase.autoStash = true;
     };
+    ignores = [
+      ".DS_Store"
+    ];
     userEmail = "contact@benfeather.dev";
     userName = "Ben Feather";
   };
