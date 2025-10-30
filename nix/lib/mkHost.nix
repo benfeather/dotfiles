@@ -23,8 +23,8 @@ in
     system = "${host.arch}-${host.os}";
     modules = [
       homeModule
-      "${self}/modules/default.nix"
-      "${self}/modules/${host.os}.nix"
+      "${self}/system/base.nix"
+      "${self}/system/${host.os}.nix"
       "${self}/hosts/${host.name}/configuration.nix"
     ];
     specialArgs = {
