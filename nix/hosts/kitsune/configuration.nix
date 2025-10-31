@@ -25,6 +25,7 @@
     "beeper"
     "brave-browser"
     "crossover"
+    "cursor"
     "cyberduck"
     "docker-desktop"
     "github"
