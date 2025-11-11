@@ -20,8 +20,9 @@
 
   homebrew.casks = [
     "adguard"
+    "affinity-designer"
+    "affinity-photo"
     "android-platform-tools"
-    "arc"
     "beeper"
     "brave-browser"
     "crossover"
@@ -48,8 +49,6 @@
   ];
 
   homebrew.masApps = {
-    affinity-designer = 1616831348;
-    affinity-photo = 1616822987;
     unarchiver = 425424353;
     xcode = 497799835;
   };
@@ -71,6 +70,7 @@
       }
       { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/Visual\ Studio\ Code.app"; }
+      { app = "/Applications/Docker.app"; }
       { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
       { app = "/Applications/Sequel\ Ace.app"; }
@@ -82,6 +82,7 @@
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Mail.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Calendar.app"; }
+      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/CrossOver.app"; }

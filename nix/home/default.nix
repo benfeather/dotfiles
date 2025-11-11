@@ -15,6 +15,7 @@
 
     # Scripts
     ./scripts/nix-rebuild.nix
+    ./scripts/nix-upgrade.nix
   ];
 
   home = {
