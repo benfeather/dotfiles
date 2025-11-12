@@ -26,7 +26,6 @@
     "beeper"
     "brave-browser"
     "crossover"
-    "cursor"
     "cyberduck"
     "docker-desktop"
     "github"
@@ -70,7 +69,7 @@
       }
       { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/Visual\ Studio\ Code.app"; }
-      { app = "/Applications/Docker.app"; }
+      { app = "/Applications/Docker.app/Contents/MacOS/Docker\ Desktop.app"; }
       { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
       { app = "/Applications/Sequel\ Ace.app"; }

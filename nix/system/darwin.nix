@@ -10,9 +10,9 @@
   # Homebrew
   homebrew = {
     enable = true;
-    onActivation.autoUpdate = true;
+    onActivation.autoUpdate = false;
     onActivation.cleanup = "zap";
-    onActivation.upgrade = true;
+    onActivation.upgrade = false;
   };
 
   # Security
