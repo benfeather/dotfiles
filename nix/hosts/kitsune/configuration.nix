@@ -29,7 +29,6 @@
     "cyberduck"
     "docker-desktop"
     "github"
-    "ghostty"
     "godot"
     "google-chrome"
     "grammarly-desktop"
@@ -62,12 +61,13 @@
     persistent-apps = [
       { app = "/Applications/Zen.app"; }
       { app = "/Applications/Brave\ Browser.app"; }
+      { app = "/Applications/Google\ Chrome.app"; }
       {
         spacer = {
           small = true;
         };
       }
-      { app = "/Applications/Ghostty.app"; }
+      { app = "/System/Applications/Utilities/Terminal.app"; }
       { app = "/Applications/Visual\ Studio\ Code.app"; }
       { app = "/Applications/Docker.app/Contents/MacOS/Docker\ Desktop.app"; }
       { app = "/Applications/GitHub\ Desktop.app"; }
@@ -81,6 +81,8 @@
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Mail.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Calendar.app"; }
+      { app = "/Applications/Proton\ Pass.app"; }
+      { app = "/Applications/ProtonVPN.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
