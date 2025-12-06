@@ -14,14 +14,12 @@
     "mkcert"
     "node@24"
     "oxlint"
-    "php@8.3"
-    "python@3"
+    "php@8.4"
   ];
 
   homebrew.casks = [
     "adguard"
-    "affinity-designer"
-    "affinity-photo"
+    "affinity"
     "android-platform-tools"
     "beeper"
     "brave-browser"
@@ -37,10 +35,13 @@
     "onlyoffice"
     "plex"
     "proton-drive"
+    "proton-mail"
     "proton-pass"
     "protonvpn"
     "setapp"
     "sequel-ace"
+    "spotify"
+    "syncthing-app"
     "visual-studio-code"
     "zen"
     "zoom"
@@ -73,17 +74,16 @@
       { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
       { app = "/Applications/Sequel\ Ace.app"; }
+      { app = "/Applications/Setapp/TablePlus.app"; }
       {
         spacer = {
           small = true;
         };
       }
+      { app = "/Applications/Spotify.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
-      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Mail.app"; }
-      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/Proton\ Calendar.app"; }
+      { app = "/Applications/Proton\ Mail.app"; }
       { app = "/Applications/Proton\ Pass.app"; }
-      { app = "/Applications/ProtonVPN.app"; }
-      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
       { app = "/Applications/Beeper\ Desktop.app"; }
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/CrossOver.app"; }
