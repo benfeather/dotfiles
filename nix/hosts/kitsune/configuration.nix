@@ -9,18 +9,22 @@
   homebrew.brews = [
     "biome"
     "bun"
+    "cocoapods"
     "composer"
     "ddev"
     "mkcert"
     "node@24"
     "oxlint"
     "php@8.4"
+    "rust"
+    "rustup"
   ];
 
   homebrew.casks = [
     "adguard"
     "affinity"
     "android-platform-tools"
+    "android-studio"
     "beeper"
     "brave-browser"
     "crossover"
