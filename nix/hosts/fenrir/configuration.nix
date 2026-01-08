@@ -93,6 +93,9 @@
   # Services: Ratbag Daemon (Mouse Configuration)
   services.ratbagd.enable = true;
 
+  # System: State Version
+  system.stateVersion = "25.11";
+
   # Users
   users.users.${host.user} = {
     name = host.user;

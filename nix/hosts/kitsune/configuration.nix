@@ -97,6 +97,9 @@
     persistent-others = [ ];
   };
 
+  # General System Settings
+  system.stateVersion = 6;
+
   # Users
   users.users.${host.user} = {
     name = host.user;

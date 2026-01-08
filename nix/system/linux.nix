@@ -38,7 +38,4 @@
       "nixpkgs"
     ];
   };
-
-  # System: State Version
-  system.stateVersion = "25.11";
 }
