@@ -56,15 +56,14 @@ let
           exit 1
         fi
 
-        # Check for outdated packages specifically
+        # Check for outdated packages
         outdated_packages=$(brew outdated)
 
+        print_step "Upgrading Homebrew packages..."
+
         if [ -n "$outdated_packages" ]; then
-          print_step "The following packages will be upgraded:"
           # Print the list indented with a hyphen for readability
           echo "$outdated_packages" | sed 's/^/   - /'
-
-          print_step "Upgrading Homebrew packages..."
 
           if brew upgrade &> /dev/null; then
             print_success "Homebrew packages upgraded"
@@ -73,7 +72,6 @@ let
             exit 1
           fi
         else
-          echo ""
           print_success "Homebrew packages are already up to date"
         fi
 
