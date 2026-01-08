@@ -85,6 +85,7 @@
       }
       { app = "/Applications/Spotify.app"; }
       { app = "/Applications/Plex.app"; }
+      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
       { app = "/Applications/Proton\ Mail.app"; }
       { app = "/Applications/Proton\ Pass.app"; }
