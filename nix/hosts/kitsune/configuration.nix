@@ -14,9 +14,10 @@
     "ddev"
     "mkcert"
     "node@24"
+    "oxfmt"
     "oxlint"
     "php@8.4"
-    "python3"
+    "python@3"
     "rust"
     "rustup"
   ];
@@ -46,9 +47,9 @@
     "setapp"
     "sequel-ace"
     "spotify"
+    "steam"
     "visual-studio-code"
     "zen"
-    "zoom"
   ];
 
   homebrew.masApps = {
@@ -66,6 +67,9 @@
     persistent-apps = [
       { app = "/Applications/Zen.app"; }
       { app = "/Applications/Brave\ Browser.app"; }
+      { app = "/Applications/Proton\ Mail.app"; }
+      { app = "/Applications/Beeper\ Desktop.app"; }
+      { app = "/Applications/Obsidian.app"; }
       {
         spacer = {
           small = true;
@@ -77,7 +81,6 @@
       { app = "/Applications/GitHub\ Desktop.app"; }
       { app = "/Applications/Cyberduck.app"; }
       { app = "/Applications/Sequel\ Ace.app"; }
-      { app = "/Applications/Setapp/TablePlus.app"; }
       {
         spacer = {
           small = true;
@@ -85,12 +88,9 @@
       }
       { app = "/Applications/Spotify.app"; }
       { app = "/Applications/Plex.app"; }
+      { app = "/Applications/Steam.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
       { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
-      { app = "/Applications/Proton\ Mail.app"; }
-      { app = "/Applications/Proton\ Pass.app"; }
-      { app = "/Applications/Beeper\ Desktop.app"; }
-      { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/CrossOver.app"; }
     ];
 
