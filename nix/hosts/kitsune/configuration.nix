@@ -9,8 +9,6 @@
   homebrew.brews = [
     "biome"
     "bun"
-    "cocoapods"
-    "composer"
     "ddev"
     "mkcert"
     "node@24"
@@ -18,15 +16,12 @@
     "oxlint"
     "php@8.4"
     "python@3"
-    "rust"
-    "rustup"
   ];
 
   homebrew.casks = [
     "adguard"
     "affinity"
     "android-platform-tools"
-    "android-studio"
     "beeper"
     "brave-browser"
     "crossover"
@@ -89,12 +84,8 @@
       { app = "/Applications/Spotify.app"; }
       { app = "/Applications/Plex.app"; }
       { app = "/Applications/Steam.app"; }
-      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/T3\ Chat.app"; }
-      { app = "/Users/ben/Applications/Brave\ Browser\ Apps.localized/YouTube.app"; }
       { app = "/Applications/CrossOver.app"; }
     ];
-
-    persistent-others = [ ];
   };
 
   # General System Settings
