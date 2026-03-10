@@ -15,55 +15,69 @@
     onActivation.upgrade = false;
   };
 
+  networking.applicationFirewall = {
+    enable = true;
+    enableStealthMode = true;
+    allowSigned = false;
+    allowSignedApp = false;
+    blockAllIncoming = true;
+  };
+
   # Security
   security.pam.services.sudo_local.enable = true;
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # System Defaults: Dock
-  system.defaults.dock = {
-    autohide = true;
-    autohide-delay = 0.2;
-    largesize = 60;
-    launchanim = false;
-    magnification = true;
-    mineffect = "scale";
-    minimize-to-application = false;
-    mru-spaces = false;
-    orientation = "bottom";
-    show-recents = false;
-    tilesize = 40;
-    wvous-bl-corner = 1;
-    wvous-br-corner = 1;
-    wvous-tl-corner = 1;
-    wvous-tr-corner = 1;
-  };
-
-  # System Defaults: Finder
-  system.defaults.finder = {
-    _FXSortFoldersFirst = true;
-    _FXSortFoldersFirstOnDesktop = true;
-    AppleShowAllExtensions = true;
-    AppleShowAllFiles = false;
-    FXEnableExtensionChangeWarning = false;
-    FXPreferredViewStyle = "clmv";
-    FXRemoveOldTrashItems = true;
-    NewWindowTarget = "Home";
-    ShowExternalHardDrivesOnDesktop = false;
-    ShowHardDrivesOnDesktop = false;
-    ShowMountedServersOnDesktop = false;
-    ShowPathbar = true;
-    ShowRemovableMediaOnDesktop = false;
-    ShowStatusBar = true;
-  };
-
-  # System Defaults: Other
+  # System Defaults
   system.defaults = {
+
+    # Dock
+    dock = {
+      autohide = true;
+      autohide-delay = 0.2;
+      largesize = 60;
+      launchanim = false;
+      magnification = true;
+      mineffect = "scale";
+      minimize-to-application = false;
+      mru-spaces = false;
+      orientation = "bottom";
+      show-recents = false;
+      tilesize = 40;
+      wvous-bl-corner = 1;
+      wvous-br-corner = 1;
+      wvous-tl-corner = 1;
+      wvous-tr-corner = 1;
+    };
+
+    # Finder
+    finder = {
+      _FXSortFoldersFirst = true;
+      _FXSortFoldersFirstOnDesktop = true;
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = false;
+      FXEnableExtensionChangeWarning = false;
+      FXPreferredViewStyle = "clmv";
+      FXRemoveOldTrashItems = true;
+      NewWindowTarget = "Home";
+      ShowExternalHardDrivesOnDesktop = false;
+      ShowHardDrivesOnDesktop = false;
+      ShowMountedServersOnDesktop = false;
+      ShowPathbar = true;
+      ShowRemovableMediaOnDesktop = false;
+      ShowStatusBar = true;
+    };
+
+    # Input
     hitoolbox.AppleFnUsageType = "Do Nothing";
-    loginwindow.GuestEnabled = false;
     magicmouse.MouseButtonMode = "TwoButton";
-    spaces.spans-displays = false;
-    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     trackpad.Clicking = true;
+
+    # Login & Security
+    loginwindow.GuestEnabled = false;
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+
+    # Spaces
+    spaces.spans-displays = false;
   };
 
   # General System Settings

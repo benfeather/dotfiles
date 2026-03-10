@@ -24,6 +24,7 @@
     "android-platform-tools"
     "beeper"
     "brave-browser"
+    "bruno"
     "crossover"
     "cyberduck"
     "docker-desktop"
