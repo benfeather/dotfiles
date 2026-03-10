@@ -15,6 +15,7 @@
     onActivation.upgrade = false;
   };
 
+  # Firewall
   networking.applicationFirewall = {
     enable = true;
     enableStealthMode = true;
@@ -29,8 +30,6 @@
 
   # System Defaults
   system.defaults = {
-
-    # Dock
     dock = {
       autohide = true;
       autohide-delay = 0.2;
@@ -49,7 +48,6 @@
       wvous-tr-corner = 1;
     };
 
-    # Finder
     finder = {
       _FXSortFoldersFirst = true;
       _FXSortFoldersFirstOnDesktop = true;
@@ -76,7 +74,8 @@
     loginwindow.GuestEnabled = false;
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
-    # Spaces
+    # Other
+    controlcenter.AirDrop = false;
     spaces.spans-displays = false;
   };
 
