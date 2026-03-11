@@ -1,9 +1,23 @@
 {
   host,
   inputs,
+  pkgs,
   ...
 }:
 {
+  # Environment
+  environment = {
+    systemPackages = with pkgs; [
+      fish
+      zsh
+    ];
+
+    shells = with pkgs; [
+      fish
+      zsh
+    ];
+  };
+
   # i18n
   i18n = {
     defaultLocale = "en_NZ.UTF-8";

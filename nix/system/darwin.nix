@@ -1,10 +1,22 @@
 {
   host,
+  pkgs,
   ...
 }:
 {
-  environment.variables = {
-    "HOMEBREW_NO_ENV_HINTS" = "TRUE";
+  # Environment
+  environment = {
+    systemPackages = with pkgs; [
+      fish
+    ];
+
+    shells = with pkgs; [
+      fish
+    ];
+
+    variables = {
+      "HOMEBREW_NO_ENV_HINTS" = "TRUE";
+    };
   };
 
   # Homebrew

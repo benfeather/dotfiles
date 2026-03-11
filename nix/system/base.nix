@@ -8,17 +8,9 @@
 {
   # Environment Packages
   environment.systemPackages = with pkgs; [
-    fish
     home-manager
     nano
     nixfmt-rfc-style
-    zsh
-  ];
-
-  # Shells
-  environment.shells = with pkgs; [
-    fish
-    zsh
   ];
 
   # Font Packages
