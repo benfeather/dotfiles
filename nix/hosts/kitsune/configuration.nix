@@ -97,6 +97,6 @@
   users.users.${host.user} = {
     name = host.user;
     home = homeDirectory;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 }

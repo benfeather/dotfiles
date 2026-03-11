@@ -11,8 +11,7 @@
     enable = true;
 
     interactiveShellInit = ''
-      set fish_greeting 
-      starship init fish | source
+      set fish_greeting ""
     '';
 
     shellAliases = {

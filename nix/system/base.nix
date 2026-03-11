@@ -12,6 +12,13 @@
     home-manager
     nano
     nixfmt-rfc-style
+    zsh
+  ];
+
+  # Shells
+  environment.shells = with pkgs; [
+    fish
+    zsh
   ];
 
   # Font Packages
@@ -46,11 +53,6 @@
   nix.settings.experimental-features = "flakes nix-command";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
-
-  # Programs
-  programs = {
-    fish.enable = true;
-  };
 
   # Time
   time.timeZone = "Pacific/Auckland";
