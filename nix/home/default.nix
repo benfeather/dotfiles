@@ -1,7 +1,6 @@
 {
   homeDirectory,
   host,
-  pkgs,
   ...
 }:
 {

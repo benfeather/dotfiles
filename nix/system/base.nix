@@ -9,7 +9,6 @@
   # Environment Packages
   environment.systemPackages = with pkgs; [
     git
-    home-manager
     nano
     nixd
     nixfmt
