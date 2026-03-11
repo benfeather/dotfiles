@@ -24,7 +24,7 @@
     "android-platform-tools"
     "beeper"
     "brave-browser"
-    "bruno"
+    # "bruno"
     "crossover"
     "cyberduck"
     "docker-desktop"
@@ -44,6 +44,7 @@
     "sequel-ace"
     "spotify"
     "steam"
+    "tailscale-app"
     "visual-studio-code"
     "zen"
   ];
