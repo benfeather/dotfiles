@@ -8,9 +8,11 @@
 {
   # Environment Packages
   environment.systemPackages = with pkgs; [
+    git
     home-manager
     nano
-    nixfmt-rfc-style
+    nixd
+    nixfmt
   ];
 
   # Font Packages

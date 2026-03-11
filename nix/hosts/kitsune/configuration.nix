@@ -24,7 +24,6 @@
     "android-platform-tools"
     "beeper"
     "brave-browser"
-    # "bruno"
     "crossover"
     "cyberduck"
     "docker-desktop"
@@ -32,14 +31,12 @@
     "godot"
     "gcloud-cli"
     "grammarly-desktop"
-    "iina"
     "obsidian"
     "onlyoffice"
     "plex"
     "proton-drive"
     "proton-mail"
     "proton-pass"
-    "protonvpn"
     "setapp"
     "sequel-ace"
     "spotify"
@@ -97,6 +94,5 @@
   users.users.${host.user} = {
     name = host.user;
     home = homeDirectory;
-    shell = pkgs.zsh;
   };
 }
