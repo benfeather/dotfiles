@@ -10,7 +10,6 @@
     ./programs/fish.nix
     ./programs/git.nix
     ./programs/starship.nix
-    ./programs/zsh.nix
 
     # Scripts
     ./scripts/nix-rebuild.nix
@@ -21,10 +20,5 @@
     homeDirectory = homeDirectory;
     stateVersion = "25.11";
     username = host.user;
-
-    sessionVariables = {
-      ANDROID_HOME = "$HOME/Library/Android/sdk";
-      NDK_HOME = "$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)";
-    };
   };
 }

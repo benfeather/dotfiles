@@ -8,6 +8,7 @@
 {
   # Environment Packages
   environment.systemPackages = with pkgs; [
+    fish
     home-manager
     nano
     nixfmt-rfc-style
@@ -45,6 +46,11 @@
   nix.settings.experimental-features = "flakes nix-command";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${host.arch}-${host.os}";
+
+  # Programs
+  programs = {
+    fish.enable = true;
+  };
 
   # Time
   time.timeZone = "Pacific/Auckland";
