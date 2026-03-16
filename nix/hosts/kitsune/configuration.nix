@@ -6,7 +6,6 @@
 {
   # Homebrew
   homebrew.brews = [
-    "biome"
     "bun"
     "ddev"
     "mkcert"
